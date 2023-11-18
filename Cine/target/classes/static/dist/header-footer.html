@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="output.css">
+    <script src="https://kit.fontawesome.com/da2008d449.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header>
+        <!--nav principal-->
+        <nav class="bg-black max-sm:hidden">
+            <ul class="flex justify-end">
+                <li><a href="#" class="text-white mr-16 text-xl">Inicio</a></li>
+                <li><a href="#" class="text-white mr-16 text-xl">Cines</a></li>
+                <li><a href="#" class="text-white mr-16 text-xl">Cartelera</a></li>
+                <li><a href="#" class="text-white mr-36 text-xl">Preguntas Frecuentes</a></li>
+            </ul>
+        </nav>
+        <!--seccion del logo-->
+        <section class="bg-gradient-to-b from-[#9C6D46] to-[#684A31] flex justify-between px-5 py-0 items-center w-full max-sm:px-0">
+            <div class="hidden max-sm:block">
+                <i class="fa-solid fa-bars max-sm:block text-2xl"></i>
+            </div>
+            <div class="cursor-pointer">
+                <img src="/Cine/src/main/resources/static/dist/assets/img/logo.png" alt="" class="w-auto h-12 max-sm:h-10 max-sm:w-auto">
+            </div>
+            <div class="search-container flex items-center relative w-[25rem] h-12 max-sm:w-40">
+                <input type="text" id="busqueda" placeholder="Busca tu Pelicula" class="bg-[rgba(247,246,245,0.53)] placeholder:text-black rounded-[20px] w-full pt-1 pb-1 indent-5 text-sm">
+                <img src="/Cine/src/main/resources/static/dist/assets/icon/busqueda-de-lupa%20(1).png" class="w-6 absolute right-2" >
+            </div>
+            <div class="user-container flex items-center w-44 h-12 justify-center relative space-x-2 max-sm:m-0 max-sm:space-x-0 max-sm:w-32">
+                <div class="ml-4 cursor-pointer max-sm:ml-0">
+                    <img src="/Cine/src/main/resources/static/dist/assets/icon/usuario.png" class="w-auto h-10 max-sm:h-10">
+                </div>
+                <div class="flex max-sm:hidden">
+                    <div class="cursor-pointer">
+                        <p class="text-lg font-semibold">Username</p>
+                    </div>
+                    <div class="absolute right-0 bottom-3 cursor-pointer">
+                        <img src="/Cine/src/main/resources/static/dist/assets/icon/flecha-hacia-abajo-para-navegar.png" class="w-3" >
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--seccion de ubicacion-->
+        <section class="bg-black flex justify-center gap-20">
+            <div class="search-container flex items-center relative w-80 h-12">
+            <input type="text" placeholder="Provincia" class="bg-[rgba(247,246,245,0.53)] placeholder:text-black text-center rounded-[20px] w-full py-1 mx-3">
+            <img src="/Cine/src/main/resources/static/dist/assets/icon/flecha-hacia-abajo-para-navegar.png" class="w-4 absolute right-4" >
+            </div>
+            <div class="search-container flex items-center relative w-80 h-12">
+                <input type="text" placeholder="Cine" class="bg-[rgba(247,246,245,0.53)] placeholder:text-black text-center rounded-[20px] w-full py-1 mx-3">
+                <img src="/Cine/src/main/resources/static/dist/assets/icon/flecha-hacia-abajo-para-navegar.png" class="w-4 absolute right-4" >
+            </div>
+        </section>
+    </header>
+
+<footer class="bg-gradient-to-b from-[#9C6D46] to-[#684A31] py-5 w-full relative z-50">
+    <div id="footerItems" class="max-sm:pr-0">
+        <div class="flex pl-36 max-sm:pl-3 space-x-3">
+            <div class="space-y-1">
+                <div class="flex items-center">
+                    <img src="/Cine/src/main/resources/static/dist/assets/icon/ayudar.png" class="w-4 mr-3" >
+                    <a href="#" class="text-white max-sm:text-sm">Preguntas Frecuentes</a>
+                </div>
+                <div class="flex items-center">
+                    <img src="/Cine/src/main/resources/static/dist/assets/icon/seguro.png" class="w-4 mr-3" >
+                    <a href="#" class="text-white max-sm:text-sm">Politicas de la Empresa</a>
+                </div>
+                <div class="flex items-center">
+                    <img src="/Cine/src/main/resources/static/dist/assets/icon/apoyo (1).png" class="w-4 mr-3" >
+                    <a href="#" class="text-white max-sm:text-sm">Atencion al Cliente</a>
+                </div>
+            </div>
+            <div class="space-y-1">
+                <div class="flex items-center">
+                    <img src="/Cine/src/main/resources/static/dist/assets/icon/grupo.png" class="w-4 mr-3" >
+                    <a href="#" class="text-white max-sm:text-sm">Creadores de la página</a>
+                </div>
+                <div class="flex items-center">
+                    <img src="/Cine/src/main/resources/static/dist/assets/icon/seguridad.png" class="w-4 mr-3" >
+                    <a href="#" class="text-white max-sm:text-sm">Politicas de Privacidad</a>
+                </div>  
+            </div>
+        </div>
+    </div>
+    <div class="flex absolute top-3 right-16 max-sm:top-20 space-x-1"> 
+        <a href="">
+            <img src="/Cine/src/main/resources/static/dist/assets/icon/facebook.png" class="w-8 h-8" >
+        </a>
+        <a href="">
+            <img src="/Cine/src/main/resources/static/dist/assets/icon/instagram.png" class="w-8 h-8" >
+        </a>
+        <a href="">
+            <img src="/Cine/src/main/resources/static/dist/assets/icon/tik-tok.png" class="w-8 h-8" >
+        </a>
+    </div>
+    </footer>
+
+    <script>
+        let busquedaInput = document.getElementById('busqueda')
+        //cambios responsive
+        function cambios() {
+            if (window.innerWidth < 640) {
+                busquedaInput.placeholder = 'Buscar'
+            }
+        }
+        cambios()
+        window.addEventListener('resize', function () {
+            cambios()
+        })
+    </script>
+</body>
+
+</html>
