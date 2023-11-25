@@ -1,7 +1,6 @@
-<!-- index.html -->
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="min-h-[100vh]">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,16 +8,19 @@
     <link rel="icon" href="\Cine\src\main\resources\static\dist\assets\icon\favicon.ico">
     <title>Perfil de Usuario</title>
 </head>
+
 <body>
 
-    <body class="bg-cover bg-center h-screen bg-[#412c19] bg-blend-soft-light" style="background-image: url('./assets/img/zyro-image\ \(2\).png');">
+    <body class="bg-cover bg-center bg-[#412c19] bg-blend-soft-light"
+        style="background-image: url('./assets/img/zyro-image\ \(2\).png');">
         <!--HEADER-->
         <header>
             <!--nav principal-->
             <nav class="bg-black max-sm:hidden">
                 <ul class="flex justify-end">
                     <li><a href="./home.html" class="text-white mr-16 text-xl">Inicio</a></li>
-                    <li><a href="#" class="text-white mr-16 text-xl" onclick="window.location.href='./busqueda.html'">Peliculas</a></li>
+                    <li><a href="#" class="text-white mr-16 text-xl"
+                            onclick="window.location.href='./busqueda.html'">Peliculas</a></li>
                     <li><a href="#" class="text-white mr-16 text-xl">Cartelera</a></li>
                 </ul>
             </nav>
@@ -42,7 +44,8 @@
                         <div onclick="userLogged()" class="absolute right-0 bottom-3 cursor-pointer ">
                             <svg class="w-5 h-5 ml-2 -mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                                 xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7">
                                 </path>
                             </svg>
                         </div>
@@ -68,43 +71,63 @@
             </section>
         </header>
 
-        <main>
+        <div class="my-7 max-sm:my-64">
             <section id="selector" class="absolute h-full w-full flex" style="display: none; z-index: 1;">
-                <div class="absolute bg-black rounded-3xl items-center" style="width:810px; height:410px; top: 5%; left: 20%;">
-                    <div class="absolute bg-[#9C6D46] rounded-3xl" style="width:800px; height:400px; top: 5px; left: 5px;">
+                <div class="absolute bg-black rounded-3xl items-center"
+                    style="width:810px; height:410px; top: 5%; left: 20%;">
+                    <div class="absolute bg-[#9C6D46] rounded-3xl"
+                        style="width:800px; height:400px; top: 5px; left: 5px;">
                         <div class="text-center" style="height: 25px; margin: 10px;">
                             <h1 class="font-serif text-xl">ELIGI TU FOTO DE PERFIL</h1>
                         </div>
                         <div class="flex">
-                            <img src="/Cine/src/main/resources/static/dist/assets/icon/servicio-al-cliente.png" class="rounded-full h-20 w-20 cursor-pointer" style="margin: 15px;" onclick="cambiarFotoPerfil(this)">
-                            <img src="/Cine/src/main/resources/static/dist/assets/icon/usuario.png" class="rounded-full h-20 w-20 cursor-pointer" style="margin: 15px;" onclick="cambiarFotoPerfil(this)">
-                            <img src="/Cine/src/main/resources/static/dist/assets/icon/user-icon-profile.png" class="rounded-full h-20 w-20 cursor-pointer" style="margin: 15px;" onclick="cambiarFotoPerfil(this)">
+                            <img src="/Cine/src/main/resources/static/dist/assets/icon/servicio-al-cliente.png"
+                                class="rounded-full h-20 w-20 cursor-pointer" style="margin: 15px;"
+                                onclick="cambiarFotoPerfil(this)">
+                            <img src="/Cine/src/main/resources/static/dist/assets/icon/usuario.png"
+                                class="rounded-full h-20 w-20 cursor-pointer" style="margin: 15px;"
+                                onclick="cambiarFotoPerfil(this)">
+                            <img src="/Cine/src/main/resources/static/dist/assets/icon/user-icon-profile.png"
+                                class="rounded-full h-20 w-20 cursor-pointer" style="margin: 15px;"
+                                onclick="cambiarFotoPerfil(this)">
                         </div>
-                        
+
                     </div>
                     <div>
-                        <button class="absolute text-white bg-stone-500 hover:bg-red-600 rounded-2xl h-10 w-28" style="top: 350px; left: 350px;" onclick="cerrarSelector()">Cancelar</button>
+                        <button class="absolute text-white bg-stone-500 hover:bg-red-600 rounded-2xl h-10 w-28"
+                            style="top: 350px; left: 350px;" onclick="cerrarSelector()">Cancelar</button>
                     </div>
                 </div>
             </section>
-            <section class="mx-auto p-5 w-90 flex space-x-2 items-stretch" style="height: 475px; justify-content: center;">
-                <div class="w-1/4 h-full bg-gray-300 bg-opacity-40 rounded-3xl flex">
+            <section
+                class="w-90 flex space-x-24 max-sm:space-x-0 max-sm:space-y-16 max-sm:pb-10 items-stretch max-sm:flex-col max-sm:items-center max-sm:justify-center"
+                style="height: 475px; justify-content: center;">
+                <div
+                    class="w-1/4 max-sm:w-9/12 justify-center h-full bg-gray-300 bg-opacity-40 rounded-3xl flex max-sm:pb-7">
                     <div style="width: 320px;">
-                        <div class="w-full flex" style="margin-top: 10px;">
-                            <img src="/Cine/src/main/resources/static/dist/assets/icon/user-icon-profile.png" id="fotoperfil" class="absolute rounded-full h-20 w-20" style="margin-left: 2%;">
-                            <div class="relative w-full" style="margin-left: 20%; margin-top: 45px;">
+                        <div class="w-full flex max-sm:flex-col" style="margin-top: 10px;">
+                            <div class="max-sm:flex max-sm:flex-col max-sm:justify-center max-sm:items-center">
+                                <img src="/Cine/src/main/resources/static/dist/assets/icon/user-icon-profile.png"
+                                    id="fotoperfil" class="absolute rounded-full h-20 w-20" style="margin-left: 2%;">
+                                <div class="relative w-full ml-[0%] mt-[45px]">
                                     <a onclick="mostrarSelector()">
-                                        <img class="rounded-full h-10 w-10 cursor-pointer" src="/Cine/src/main/resources/static/dist/assets/icon/camara.jpg">
+                                        <img class="rounded-full h-10 w-10 cursor-pointer"
+                                            src="/Cine/src/main/resources/static/dist/assets/icon/camara.jpg">
                                     </a>
+                                </div>
                             </div>
-                            <h1 class="font-serif font-bold text-xl absolute" style="margin-left: 140px; margin-top: 45px;">Usuario (Admin)</h1>
+                            <div>
+                                <h1
+                                    class="font-serif ml-[80px] mt-6 font-bold text-xl absolute max-sm:static max-sm:text-center max-sm:ml-0">
+                                    Usuario</h1>
+                            </div>
                         </div>
                         <div class="font-serif relative mt-10">
-                            <h1 class="font-bold text-xl mb-2" style="margin-left: 45px;"> - Datos Personales - </h1>
-                            <div class="font-bold w-full font-serif text-sm" style="margin-left: 45px;">
+                            <h1 class="font-bold mb-2 indent-6 text-lg">DATOS GENERALES</h1>
+                            <div class="font-bold w-full font-serif indent-6">
                                 <p class="mt-1">Nombre Completo</p>
                                 <p class="mt-1">Genero</p>
-                                <p class="mt-1">Fecha de Nacimientoc</p>
+                                <p class="mt-1">Fecha de Nacimiento</p>
                                 <p class="mt-1">Cedula</p>
                                 <p class="mt-1">Email</p>
                                 <p class="mt-1">Telefono</p>
@@ -120,91 +143,118 @@
                         </div>
                     </div>
                 </div>
-                <div class="h-full bg-gray-300 bg-opacity-40 rounded-3xl flex flex-col space-y-3" style="margin-left: 40px; width: 800px;">
+                <div class="bg-gray-300 bg-opacity-40 rounded-3xl flex flex-col space-y-3 p-5 max-sm:p-3">
                     <div>
-                        <h1 class="text-white font-bold text-3xl ml-11 mt-4">Peliculas Vistas</h1>
+                        <h1 class="text-white font-bold text-3xl ml-11 mt-4 max-sm:text-2xl">Peliculas Vistas</h1>
                     </div>
-                    <div class="flex items-center justify-center space-x-3">
-                        <div>
-                            <img src="./assets/img/img-home/carrusel1.png" alt="" class="w-[231px] h-[130px] object-cover">
-                            <p class="text-white text-center font-bold">CARS</p>
+                    <div class="flex flex-col max-sm:flex-row">
+                        <div class="flex items-center justify-center space-x-3 max-sm:flex-col max-sm:space-y-4">
+                            <div
+                                class="max-sm:max-h-[95px] max-sm:flex max-sm:flex-col max-sm:justify-center max-sm:items-center">
+                                <img src="./assets/img/img-home/carrusel1.png" alt=""
+                                    class="w-[200px] h-[130px] object-cover max-sm:w-[138px] max-sm:h-[79px]">
+                                <p
+                                    class="text-white text-center font-bold max-sm:text-xs max-sm:max-w-[138px] overflow-hidden">
+                                    CARS</p>
+                            </div>
+                            <div
+                                class="max-sm:max-h-[95px] max-sm:flex max-sm:flex-col max-sm:justify-center max-sm:items-center">
+                                <img src="./assets/img/img-home/carrusel1.png" alt=""
+                                    class="w-[200px] h-[130px] object-cover max-sm:w-[138px] max-sm:h-[79px]">
+                                <p
+                                    class="text-white text-center font-bold max-sm:text-xs max-sm:max-w-[138px] overflow-hidden">
+                                    INCEPTION</p>
+                            </div>
+                            <div
+                                class="max-sm:max-h-[95px] max-sm:flex max-sm:flex-col max-sm:justify-center max-sm:items-center">
+                                <img src="./assets/img/img-home/carrusel1.png" alt=""
+                                    class="w-[200px] h-[130px] object-cover max-sm:w-[138px] max-sm:h-[79px]">
+                                <p
+                                    class="text-white text-center font-bold max-sm:text-xs max-sm:max-w-[138px] overflow-hidden">
+                                    OPPENHEIMER</p>
+                            </div>
                         </div>
-                        <div>
-                            <img src="./assets/img/img-home/carrusel1.png" alt="" class="w-[231px] h-[130px] object-cover">
-                            <p class="text-white text-center font-bold">INCEPTION</p>
-                        </div>
-                        <div>
-                            <img src="./assets/img/img-home/carrusel1.png" alt="" class="w-[231px] h-[130px] object-cover">
-                            <p class="text-white text-center font-bold">OPPENHEIMER</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-center space-x-3">
-                        <div>
-                            <img src="./assets/img/img-home/carrusel2.jpg" alt="" class="w-[231px] h-[130px] object-cover">
-                            <p class="text-white text-center font-bold">AKIRA</p>
-                        </div>
-                        <div>
-                            <img src="./assets/img/img-home/carrusel2.jpg" alt="" class="w-[231px] h-[130px] object-cover">
-                            <p class="text-white text-center font-bold">PRINCESS MONONOKE</p>
-                        </div>
-                        <div>
-                            <img src="./assets/img/img-home/carrusel2.jpg" alt="" class="w-[231px] h-[130px] object-cover">
-                            <p class="text-white text-center font-bold">STAR WARS ROGUE ONE</p>
+                        <div class="flex items-center justify-center space-x-3 max-sm:flex-col max-sm:space-y-4">
+                            <div
+                                class="max-sm:max-h-[95px] max-sm:flex max-sm:flex-col max-sm:justify-center max-sm:items-center">
+                                <img src="./assets/img/img-home/carrusel2.jpg" alt=""
+                                    class="w-[200px] h-[130px] object-cover max-sm:w-[138px] max-sm:h-[79px]">
+                                <p
+                                    class="text-white text-center font-bold max-sm:text-xs max-sm:max-w-[138px] overflow-hidden">
+                                    AKIRA</p>
+                            </div>
+                            <div
+                                class="max-sm:max-h-[95px] max-sm:flex max-sm:flex-col max-sm:justify-center max-sm:items-center">
+                                <img src="./assets/img/img-home/carrusel2.jpg" alt=""
+                                    class="w-[200px] h-[130px] object-cover max-sm:w-[138px] max-sm:h-[79px]">
+                                <p
+                                    class="text-white text-center font-bold max-sm:text-xs max-sm:max-w-[138px] overflow-hidden">
+                                    PRINCESS MONONOKE</p>
+                            </div>
+                            <div
+                                class="max-sm:max-h-[95px] max-sm:flex max-sm:flex-col max-sm:justify-center max-sm:items-center">
+                                <img src="./assets/img/img-home/carrusel2.jpg" alt=""
+                                    class="w-[200px] h-[130px] object-cover max-sm:w-[138px] max-sm:h-[79px]">
+                                <p
+                                    class="text-white text-center font-bold max-sm:text-xs max-sm:max-w-[138px] overflow-hidden">
+                                    STAR WARS ROGUE ONE</p>
+                            </div>
                         </div>
                     </div>
                     <div class="flex justify-center items-center">
-                        <button class="text-2xl">
-                            VER MÁS
-                        </button>
+                        <button class="text-2xl max-sm:text-xl">VER MÁS</button>
                     </div>
                 </div>
             </section>
-        </main>
+        </div>
 
         <!-- Fin de contenido -->
-
-        <footer class="bg-gradient-to-b from-[#9C6D46] to-[#684A31] py-5 mt-5 w-full relative z-50">
+CAMBIO RANDOM
+        <footer class="bg-gradient-to-b from-[#9C6D46] to-[#684A31] py-5 w-full relative z-50">
             <div id="footerItems" class="max-sm:pr-0">
                 <div class="flex pl-36 max-sm:pl-3 space-x-3">
                     <div class="space-y-1">
                         <div class="flex items-center">
-                            <img src="/Cine/src/main/resources/static/dist/assets/icon/ayudar.png" class="w-4 mr-3" >
+                            <img src="/Cine/src/main/resources/static/dist/assets/icon/ayudar.png" class="w-4 mr-3" />
                             <a href="#" class="text-white max-sm:text-sm">Preguntas Frecuentes</a>
                         </div>
                         <div class="flex items-center">
-                            <img src="/Cine/src/main/resources/static/dist/assets/icon/seguro.png" class="w-4 mr-3" >
+                            <img src="/Cine/src/main/resources/static/dist/assets/icon/seguro.png" class="w-4 mr-3" />
                             <a href="#" class="text-white max-sm:text-sm">Politicas de la Empresa</a>
                         </div>
                         <div class="flex items-center">
-                            <img src="/Cine/src/main/resources/static/dist/assets/icon/apoyo (1).png" class="w-4 mr-3" >
+                            <img src="/Cine/src/main/resources/static/dist/assets/icon/apoyo (1).png"
+                                class="w-4 mr-3" />
                             <a href="#" class="text-white max-sm:text-sm">Atencion al Cliente</a>
                         </div>
                     </div>
                     <div class="space-y-1">
                         <div class="flex items-center">
-                            <img src="/Cine/src/main/resources/static/dist/assets/icon/grupo.png" class="w-4 mr-3" >
+                            <img src="/Cine/src/main/resources/static/dist/assets/icon/grupo.png" class="w-4 mr-3" />
                             <a href="#" class="text-white max-sm:text-sm">Creadores de la página</a>
                         </div>
                         <div class="flex items-center">
-                            <img src="/Cine/src/main/resources/static/dist/assets/icon/seguridad.png" class="w-4 mr-3" >
+                            <img src="/Cine/src/main/resources/static/dist/assets/icon/seguridad.png"
+                                class="w-4 mr-3" />
                             <a href="#" class="text-white max-sm:text-sm">Politicas de Privacidad</a>
-                        </div>  
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="flex absolute top-3 right-16 max-sm:top-20 space-x-1"> 
+            <div class="flex absolute top-3 right-16 max-sm:top-16 space-x-1">
                 <a href="">
-                    <img src="/Cine/src/main/resources/static/dist/assets/icon/facebook.png" class="w-8 h-8" >
+                    <img src="/Cine/src/main/resources/static/dist/assets/icon/facebook.png" class="w-8 h-8" />
                 </a>
                 <a href="">
-                    <img src="/Cine/src/main/resources/static/dist/assets/icon/instagram.png" class="w-8 h-8" >
+                    <img src="/Cine/src/main/resources/static/dist/assets/icon/instagram.png" class="w-8 h-8" />
                 </a>
                 <a href="">
-                    <img src="/Cine/src/main/resources/static/dist/assets/icon/tik-tok.png" class="w-8 h-8" >
+                    <img src="/Cine/src/main/resources/static/dist/assets/icon/tik-tok.png" class="w-8 h-8" />
                 </a>
             </div>
-        </footer>
+        </footer>
         <script src="./assets/js/header.js"></script>
         <script src="./assets/js/perfil_admin.js"></script>
-</body>
+    </body>
+
 </html>
