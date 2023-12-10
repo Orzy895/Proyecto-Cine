@@ -36,40 +36,40 @@
 				<img src="./assets/icon/busqueda-de-lupa%20(1).png" class="w-6 absolute right-2">
 			</div>
 			<div
-				class="user-container flex items-center w-44 h-12 justify-center relative space-x-2 max-sm:m-0 max-sm:space-x-0 max-sm:w-32">
-				<div class="ml-4 cursor-pointer max-sm:ml-0">
-					<img src="./assets/icon/usuario.png" class="w-auto h-10 max-sm:h-10">
-				</div>
-				<div class="flex max-sm:hidden">
-					<div class="cursor-pointer">
-						<p id="usernamePlaceholder" class="text-lg font-semibold">Username</p>
-					</div>
-					<div onclick="userLogged()" class="absolute right-0 bottom-3 cursor-pointer ">
-						<svg class="w-5 h-5 ml-2 -mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-							xmlns="http://www.w3.org/2000/svg">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
-							</path>
-						</svg>
-					</div>
-				</div>
-				<div id="guest-slide"
-					class="absolute w-52 h-44 bg-white top-12 right-[-10px] z-[500] rounded-lg text-center hidden">
-					<p class="mt-2">Inicie Sesión en Filmania</p>
-					<button onclick="window.location.href='./inicio-sesion.html'"
-						class="mt-2 bg-[#996c45] w-40 py-2 rounded-full font-bold">Inicie Sesión</button>
-					<p class="mt-2">o</p>
-					<button onclick="window.location.href='./registro.html'"
-						class="mt-2 bg-[#996c45] w-40 py-2 rounded-full font-bold z-[150]">Registrese</button>
-				</div>
-				<div id="user-slide"
-					class="absolute w-52 h-44 bg-white top-12 right-[-10px] z-[500] rounded-lg hidden text-center">
-					<p class="mt-2">Bienvenido a Filmania</p>
-					<button onclick="window.location.href='./perfil-usuario.html'"
-						class="mt-4 bg-[#996c45] w-40 py-2 rounded-full font-bold">Perfil</button>
-					<button onclick="" class="mt-4 bg-[#996c45] w-40 py-2 rounded-full font-bold z-[100]">Cerrar
-						Sesión</button>
-				</div>
-			</div>
+                class="user-container flex items-center w-44 h-12 justify-center relative space-x-2 max-sm:m-0 max-sm:space-x-0 max-sm:w-32">
+                <div id="perfilUsuarioBtn" onclick="irAPerfilUsuario()" class="cursor-pointer max-sm:ml-0">
+                    <img id="perfilUsuario" class="rounded-full h-10 w-10 cursor-pointer" src="./assets/icon/usuario.png"
+                        class="w-auto h-10 max-sm:h-10">
+                </div>
+                <div class="flex max-sm:hidden">
+                    <div class="cursor-pointer">
+                        <p id="usernamePlaceholder" class="text-lg font-semibold text-ellipsis whitespace-nowrap overflow-hidden mr-3">Username</p>
+                    </div>
+                    <div onclick="userLogged()" class="absolute right-0 bottom-3 cursor-pointer ">
+                        <svg class="w-5 h-5 ml-2 -mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
+                        </svg>
+                    </div>
+                </div>
+                <div id="guest-slide"
+                    class="absolute w-52 h-44 bg-white top-12 right-[-10px] z-50 rounded-lg text-center hidden">
+                    <p class="mt-2">Inicie Sesión en Filmania</p>
+                    <button onclick="window.location.href='./inicio-sesion.html'"
+                        class="mt-2 bg-[#996c45] w-40 py-2 rounded-full font-bold">Inicie Sesión</button>
+                    <p class="mt-2">o</p>
+                    <button onclick="window.location.href='./registro.html'"
+                        class="mt-2 bg-[#996c45] w-40 py-2 rounded-full font-bold">Registrese</button>
+                </div>
+                <div id="user-slide"
+                    class="absolute w-52 h-44 bg-white top-12 right-[-10px] z-50 rounded-lg hidden text-center">
+                    <p class="mt-2">Bienvenido a Filmania</p>
+                    <button onclick="window.location.href='./perfil-usuario.html'"
+                        class="mt-4 bg-[#996c45] w-40 py-2 rounded-full font-bold">Perfil</button>
+                    <button id="logoutButton" class="mt-4 bg-[#996c45] w-40 py-2 rounded-full font-bold">Cerrar Sesión</button>
+                </div>
+            </div>
 		</section>
 		<!--seccion de ubicacion-->
 		<section class="bg-black flex justify-center gap-20">
@@ -95,7 +95,7 @@
 	</header>
 
 	<!--Seccion del CHATBOX-->
-	<section class="w-full h-[1600px] max-sm:h-[1800px] absolute top-[145px] max-sm:top-[80px] z-1 ">
+	<section class="w-full h-[1335px] max-sm:h-[1700px] absolute top-[145px] max-sm:top-[80px] z-1 ">
 		<!--CHATBOX-->
 		<button id="show-chatbot" class="chatbot-toggle-button z-50">
 			<div class="bg-[#63432e] flex items-center">
@@ -122,7 +122,7 @@
 	</section>
 
 	<!-- Sección de cartelera -->
-	<section class="flex flex-col w-full justify-center items-center  my-4 px-4 py-4 gap-1 z-10">
+	<section class="flex flex-col w-full justify-center items-center  my-4 px-4 py-4 gap-1 z-10 min-h-full h-full">
 
 		<!-- titulo (el original se perdió) -->
 		<section class="flex w-full flex-col justify-center items-center mx-4 px-4 my-4 py-4 gap-1">
@@ -132,19 +132,19 @@
 
 
 		<!--cuarta barra, a ver si esta sirve-->
-		<section class="flex flex-col md:flex md:flex-wrap w-[94%] px-1 my-2 items-center justify-center ">
+		<section class="flex flex-col md:flex md:flex-wrap w-[94%] px-1 my-2 items-center justify-center">
 			<div
-				class="flex flex-col sm:flex-row w-full h-[95%] gap-2 mx-1 my-1 px-1 py-1 bg-gradient-to-b from-[#9C6D46] to-[#684A31] rounded-lg justify-around ">
-				<div class="flex flex-wrap w-1/3 h-full justify-center items-center mx-1 gap-1">
+				class="flex flex-col sm:flex-row w-full h-[95%] gap-2 mx-1 my-1 px-1 py-1 bg-gradient-to-b from-[#9C6D46] to-[#684A31] rounded-lg justify-around max-sm:items-center max-sm:justify-center">
+				<div class="flex flex-wrap w-1/3 max-sm:w-full h-full justify-center items-center mx-1 gap-1">
 					<div class="relative flex h-full w-full items-center justify-center overflow-hidden ">
-						<div class="mx-auto w-full ">
-							<ul class="shadow-xl flex w-full">
+						<div class="mx-auto w-full flex items-center justify-center ">
+							<ul class="shadow-xl flex w-full items-center justify-center">
 								<li class="relative flex w-30 items-center justify-center py-1 px-1">
 									<img src="./assets/icon/busqueda-de-lupa (1).png" class="w-6 h-5">
 								</li>
 								<li class="flex w-full items-center py-1 ">
 									<select name="genero" id="genero"
-										class="bg-[rgba(247,246,245,0.53)] placeholder:text-black text-center rounded-[20px] w-full h-[95%] py-1 justify-center items-center">
+										class="bg-[rgba(247,246,245,0.53)] placeholder:text-black text-center rounded-[20px] w-full h-[95%] py-1 justify-center items-center max-sm:w-60">
 										<option value="" selected>Genero</option>
 										<option value="accion">Acción</option>
 										<option value="comedy">Comedia</option>
@@ -160,17 +160,17 @@
 				</div>
 				<div class="w-5"></div>
 
-				<div class="flex flex-wrap w-1/3 h-full justify-center items-center mx-1 gap-1 ml-10">
+				<div class="flex flex-wrap w-1/3 max-sm:w-full h-full justify-center items-center mx-1 gap-1">
 					<div class="relative flex h-full w-full items-center justify-center">
-						<div class="mx-auto w-full">
-							<ul class="shadow-xl w-full flex">
-								<li class="relative flex w-30 items-center justify-center py-1 ">
+						<div class="mx-auto w-full flex items-center justify-center">
+							<ul class="shadow-xl w-full flex items-center justify-center">
+								<li class="relative flex w-30 items-center justify-center py-1 px-1">
 									<img src="./assets/icon/calendario.png" class="w-6 h-5">
 								</li>
 								<li class="flex w-full items-center py-1">
-									<div class="w-1/2 ">
-										<input type="date" name="" id=""
-											class="rounded-full w-full mx-1 gap-1 bg-[rgba(247,246,245,0.53)] text-center">
+									<div class="w-full">
+										<input type="date" name="" id="fecha"
+											class="rounded-[20px] w-full bg-[rgba(247,246,245,0.53)] h-[95%] text-center max-sm:w-60">
 									</div>
 								</li>
 							</ul>
@@ -181,9 +181,9 @@
 			</div>
 		</section>
 
-		<!--gran caja-->
+		<!--Pelicula 1-->
 		<section
-			class="w-[95%] py-4 flex flex-col justify-center items-center gap-5 sm:flex-row sm:items-start rounded-md border-[2px] border-white border-solid z-20 my-4">
+			class="w-[95%] py-4 flex flex-col justify-center gap-5 sm:flex-row sm:items-start rounded-md border-[2px] border-white border-solid z-20 my-4">
 			<div
 				class="h-[95%] sm:h-[95%] sm:w-1/3 md:mx-[1px] md:my-1 gap-1 flex flex-col justify-center items-center">
 				<div class="relative flex flex-col justify-center items-center h-[100%] w-[60%] rounded-md mx-2 px-2">
@@ -191,13 +191,13 @@
 						class="image-item max-w-none rounded-md w-[120px] h-[180px] object-cover md:w-[200px] md:h-[260px] lg:w-[220px] lg:h-[280px] md:mx-3 lg:mx-3">
 				</div>
 			</div>
-			<div class="md:h-full md:w-2/3 md:mx-[1px] md:my-1 md:px-3 grid grid-flow-col items-left place-items-start">
-				<ul class="md:h-[98%] w-[390px]">
+			<div class="md:h-full md:w-2/3 md:mx-[1px] md:my-1 md:px-3">
+				<ul class="">
 					<li class="h-8 w-full">
 						<h2 class="text-white text-left font-mono w-11/12 text-lg mx-1 my-1">Guardians of the Galaxy
 						</h2>
 					</li>
-					<li class="flex flex-wrap h-8 items-center justify-start">
+					<li class="flex flex-wrap justify-start">
 						<div
 							class="bg-[#764D30] w-[40px] h-7 mx-1 my-1 px-1 py-1 justify-center rounded-md border-[2px]">
 							<h2 class="text-white text-left px-1 font-mono w-[30px] font-bold">A</h2>
@@ -208,7 +208,67 @@
 						</div>
 					</li>
 					<li class="w-full">
-						<hr class="my-4 w-[400px]">
+						<hr class="my-4 w-full">
+					</li>
+					<li class="flex flex-wrap h-8 my-3 items-center justify-start">
+						<div class="h-7 mx-1 my-1 px-1 py-1 justify-center rounded-md border-[2px] bg-[#764D30]">
+							<h2 class="text-white text-left font-bold px-1 font-mono w-[44px]">Dub</h2>
+						</div>
+						<button
+							class="h-7 bg-[#C6C3C3] w-[102px] mx-1 my-1 px-1 py-1 justify-start rounded-full border-[2px]">
+							<p id="b1" class="text-black w-[79px] h-6 text-center font-bold" onclick="getHora()">12:00 p.m.</p>
+						</button>
+
+						<button
+							class="h-7 bg-[#C6C3C3] w-[100px] mx-1 my-1 px-1 py-1 justify-start rounded-full border-[2px]">
+							<p class="text-black w-[78px] h-5 text-center font-bold">4:20 p.m.</p>
+						</button>
+					</li>
+					<li class="flex flex-wrap h-8 my-3 items-center justify-start">
+						<div class="h-7 mx-1 my-1 px-1 py-1 justify-center rounded-md border-[2px] bg-[#764D30]">
+							<h2 class="text-white text-left font-bold px-1 font-mono w-[44px]">sub</h2>
+						</div>
+						<button
+							class="h-7 bg-[#C6C3C3] w-[102px] mx-1 my-1 px-1 py-1 justify-start rounded-full border-[2px]">
+							<p class="text-black w-[79px] h-6 text-center font-bold">12:00 p.m.</p>
+						</button>
+						<button
+							class="h-7 bg-[#C6C3C3] w-[100px] mx-1 my-1 px-1 py-1 justify-start rounded-full border-[2px]">
+							<p class="text-black w-[78px] h-5 text-center font-bold">4:20 p.m.</p>
+						</button>
+					</li>
+				</ul>
+			</div>
+		</section>
+
+		<!--Pelicula 2-->
+		<section
+			class="w-[95%] py-4 flex flex-col justify-center gap-5 sm:flex-row sm:items-start rounded-md border-[2px] border-white border-solid z-20 my-4">
+			<div
+				class="h-[95%] sm:h-[95%] sm:w-1/3 md:mx-[1px] md:my-1 gap-1 flex flex-col justify-center items-center">
+				<div class="relative flex flex-col justify-center items-center h-[100%] w-[60%] rounded-md mx-2 px-2">
+					<img src="./assets/img/img-infoPeli/guardianes.jpeg"
+						class="image-item max-w-none rounded-md w-[120px] h-[180px] object-cover md:w-[200px] md:h-[260px] lg:w-[220px] lg:h-[280px] md:mx-3 lg:mx-3">
+				</div>
+			</div>
+			<div class="md:h-full md:w-2/3 md:mx-[1px] md:my-1 md:px-3">
+				<ul class="">
+					<li class="h-8 w-full">
+						<h2 class="text-white text-left font-mono w-11/12 text-lg mx-1 my-1">Guardians of the Galaxy
+						</h2>
+					</li>
+					<li class="flex flex-wrap justify-start">
+						<div
+							class="bg-[#764D30] w-[40px] h-7 mx-1 my-1 px-1 py-1 justify-center rounded-md border-[2px]">
+							<h2 class="text-white text-left px-1 font-mono w-[30px] font-bold">A</h2>
+						</div>
+						<div
+							class="bg-[#764D30] w-[90px] h-7 mx-1 my-1 px-1 py-1 justify-center rounded-md border-[2px]">
+							<h2 class="text-white text-left px-1 font-mono w-[78px] font-bold">101 min</h2>
+						</div>
+					</li>
+					<li class="w-full">
+						<hr class="my-4 w-full">
 					</li>
 					<li class="flex flex-wrap h-8 my-3 items-center justify-start">
 						<div class="h-7 mx-1 my-1 px-1 py-1 justify-center rounded-md border-[2px] bg-[#764D30]">
@@ -240,8 +300,10 @@
 				</ul>
 			</div>
 		</section>
+
+		<!--Pelicula 3-->
 		<section
-			class="w-[95%] py-4 flex flex-col justify-center items-center gap-5 sm:flex-row sm:items-start rounded-md border-[2px] border-white border-solid z-20 my-4">
+			class="w-[95%] py-4 flex flex-col justify-center gap-5 sm:flex-row sm:items-start rounded-md border-[2px] border-white border-solid z-20 my-4">
 			<div
 				class="h-[95%] sm:h-[95%] sm:w-1/3 md:mx-[1px] md:my-1 gap-1 flex flex-col justify-center items-center">
 				<div class="relative flex flex-col justify-center items-center h-[100%] w-[60%] rounded-md mx-2 px-2">
@@ -249,13 +311,13 @@
 						class="image-item max-w-none rounded-md w-[120px] h-[180px] object-cover md:w-[200px] md:h-[260px] lg:w-[220px] lg:h-[280px] md:mx-3 lg:mx-3">
 				</div>
 			</div>
-			<div class="md:h-full md:w-2/3 md:mx-[1px] md:my-1 md:px-3 grid grid-flow-col items-left place-items-start">
-				<ul class="md:h-[98%] w-[390px]">
+			<div class="md:h-full md:w-2/3 md:mx-[1px] md:my-1 md:px-3">
+				<ul class="">
 					<li class="h-8 w-full">
 						<h2 class="text-white text-left font-mono w-11/12 text-lg mx-1 my-1">Guardians of the Galaxy
 						</h2>
 					</li>
-					<li class="flex flex-wrap h-8 items-center justify-start">
+					<li class="flex flex-wrap justify-start">
 						<div
 							class="bg-[#764D30] w-[40px] h-7 mx-1 my-1 px-1 py-1 justify-center rounded-md border-[2px]">
 							<h2 class="text-white text-left px-1 font-mono w-[30px] font-bold">A</h2>
@@ -264,10 +326,9 @@
 							class="bg-[#764D30] w-[90px] h-7 mx-1 my-1 px-1 py-1 justify-center rounded-md border-[2px]">
 							<h2 class="text-white text-left px-1 font-mono w-[78px] font-bold">101 min</h2>
 						</div>
-
 					</li>
 					<li class="w-full">
-						<hr class="my-4 w-[400px]">
+						<hr class="my-4 w-full">
 					</li>
 					<li class="flex flex-wrap h-8 my-3 items-center justify-start">
 						<div class="h-7 mx-1 my-1 px-1 py-1 justify-center rounded-md border-[2px] bg-[#764D30]">
@@ -277,6 +338,7 @@
 							class="h-7 bg-[#C6C3C3] w-[102px] mx-1 my-1 px-1 py-1 justify-start rounded-full border-[2px]">
 							<p class="text-black w-[79px] h-6 text-center font-bold">12:00 p.m.</p>
 						</button>
+
 						<button
 							class="h-7 bg-[#C6C3C3] w-[100px] mx-1 my-1 px-1 py-1 justify-start rounded-full border-[2px]">
 							<p class="text-black w-[78px] h-5 text-center font-bold">4:20 p.m.</p>
@@ -298,148 +360,24 @@
 				</ul>
 			</div>
 		</section>
-		<section
-			class="w-[95%] py-4 flex flex-col justify-center items-center gap-5 sm:flex-row sm:items-start rounded-md border-[2px] border-white border-solid z-20 my-4">
-			<div
-				class="h-[95%] sm:h-[95%] sm:w-1/3 md:mx-[1px] md:my-1 gap-1 flex flex-col justify-center items-center">
-				<div class="relative flex flex-col justify-center items-center h-[100%] w-[60%] rounded-md mx-2 px-2">
-					<img src="./assets/img/img-infoPeli/guardianes.jpeg"
-						class="image-item max-w-none rounded-md w-[120px] h-[180px] object-cover md:w-[200px] md:h-[260px] lg:w-[220px] lg:h-[280px] md:mx-3 lg:mx-3">
-				</div>
-			</div>
-			<div class="md:h-full md:w-2/3 md:mx-[1px] md:my-1 md:px-3 grid grid-flow-col items-left place-items-start">
-				<ul class="md:h-[98%] w-[390px]">
-					<li class="h-8 w-full">
-						<h2 class="text-white text-left font-mono w-11/12 text-lg mx-1 my-1">Guardians of the Galaxy
-						</h2>
-					</li>
-					<li class="flex flex-wrap h-8 items-center justify-start">
-						<div
-							class="bg-[#764D30] w-[40px] h-7 mx-1 my-1 px-1 py-1 justify-center rounded-md border-[2px]">
-							<h2 class="text-white text-left px-1 font-mono w-[30px] font-bold">A</h2>
-						</div>
-						<div
-							class="bg-[#764D30] w-[90px] h-7 mx-1 my-1 px-1 py-1 justify-center rounded-md border-[2px]">
-							<h2 class="text-white text-left px-1 font-mono w-[78px] font-bold">101 min</h2>
-						</div>
-
-					</li>
-					<li class="w-full">
-						<hr class="my-4 w-[400px]">
-					</li>
-					<li class="flex flex-wrap h-8 my-3 items-center justify-start">
-						<div class="h-7 mx-1 my-1 px-1 py-1 justify-center rounded-md border-[2px] bg-[#764D30]">
-							<h2 class="text-white text-left font-bold px-1 font-mono w-[44px]">Dub</h2>
-						</div>
-						<button
-							class="h-7 bg-[#C6C3C3] w-[102px] mx-1 my-1 px-1 py-1 justify-start rounded-full border-[2px]">
-							<p class="text-black w-[79px] h-6 text-center font-bold">12:00 p.m.</p>
-						</button>
-						<button
-							class="h-7 bg-[#C6C3C3] w-[100px] mx-1 my-1 px-1 py-1 justify-start rounded-full border-[2px]">
-							<p class="text-black w-[78px] h-5 text-center font-bold">4:20 p.m.</p>
-						</button>
-					</li>
-					<li class="flex flex-wrap h-8 my-3 items-center justify-start">
-						<div class="h-7 mx-1 my-1 px-1 py-1 justify-center rounded-md border-[2px] bg-[#764D30]">
-							<h2 class="text-white text-left font-bold px-1 font-mono w-[44px]">sub</h2>
-						</div>
-						<button
-							class="h-7 bg-[#C6C3C3] w-[102px] mx-1 my-1 px-1 py-1 justify-start rounded-full border-[2px]">
-							<p class="text-black w-[79px] h-6 text-center font-bold">12:00 p.m.</p>
-						</button>
-						<button
-							class="h-7 bg-[#C6C3C3] w-[100px] mx-1 my-1 px-1 py-1 justify-start rounded-full border-[2px]">
-							<p class="text-black w-[78px] h-5 text-center font-bold">4:20 p.m.</p>
-						</button>
-					</li>
-				</ul>
-			</div>
-		</section>
-		<section
-			class="w-[95%] py-4 flex flex-col justify-center items-center gap-5 sm:flex-row sm:items-start rounded-md border-[2px] border-white border-solid z-20 my-4">
-			<div
-				class="h-[95%] sm:h-[95%] sm:w-1/3 md:mx-[1px] md:my-1 gap-1 flex flex-col justify-center items-center">
-				<div class="relative flex flex-col justify-center items-center h-[100%] w-[60%] rounded-md mx-2 px-2">
-					<img src="./assets/img/img-infoPeli/guardianes.jpeg"
-						class="image-item max-w-none rounded-md w-[120px] h-[180px] object-cover md:w-[200px] md:h-[260px] lg:w-[220px] lg:h-[280px] md:mx-3 lg:mx-3">
-				</div>
-			</div>
-			<div class="md:h-full md:w-2/3 md:mx-[1px] md:my-1 md:px-3 grid grid-flow-col items-left place-items-start">
-				<ul class="md:h-[98%] w-[390px]">
-					<li class="h-8 w-full">
-						<h2 class="text-white text-left font-mono w-11/12 text-lg mx-1 my-1">Guardians of the Galaxy
-						</h2>
-					</li>
-					<li class="flex flex-wrap h-8 items-center justify-start">
-						<div
-							class="bg-[#764D30] w-[40px] h-7 mx-1 my-1 px-1 py-1 justify-center rounded-md border-[2px]">
-							<h2 class="text-white text-left px-1 font-mono w-[30px] font-bold">A</h2>
-						</div>
-						<div
-							class="bg-[#764D30] w-[90px] h-7 mx-1 my-1 px-1 py-1 justify-center rounded-md border-[2px]">
-							<h2 class="text-white text-left px-1 font-mono w-[78px] font-bold">101 min</h2>
-						</div>
-
-					</li>
-					<li class="w-full">
-						<hr class="my-4 w-[400px]">
-					</li>
-					<li class="flex flex-wrap h-8 my-3 items-center justify-start">
-						<div class="h-7 mx-1 my-1 px-1 py-1 justify-center rounded-md border-[2px] bg-[#764D30]">
-							<h2 class="text-white text-left font-bold px-1 font-mono w-[44px]">Dub</h2>
-						</div>
-						<button
-							class="h-7 bg-[#C6C3C3] w-[102px] mx-1 my-1 px-1 py-1 justify-start rounded-full border-[2px]">
-							<p class="text-black w-[79px] h-6 text-center font-bold">12:00 p.m.</p>
-						</button>
-						<button
-							class="h-7 bg-[#C6C3C3] w-[100px] mx-1 my-1 px-1 py-1 justify-start rounded-full border-[2px]">
-							<p class="text-black w-[78px] h-5 text-center font-bold">4:20 p.m.</p>
-						</button>
-					</li>
-					<li class="flex flex-wrap h-8 my-3 items-center justify-start">
-						<div class="h-7 mx-1 my-1 px-1 py-1 justify-center rounded-md border-[2px] bg-[#764D30]">
-							<h2 class="text-white text-left font-bold px-1 font-mono w-[44px]">sub</h2>
-						</div>
-						<button
-							class="h-7 bg-[#C6C3C3] w-[102px] mx-1 my-1 px-1 py-1 justify-start rounded-full border-[2px]">
-							<p class="text-black w-[79px] h-6 text-center font-bold">12:00 p.m.</p>
-						</button>
-						<button
-							class="h-7 bg-[#C6C3C3] w-[100px] mx-1 my-1 px-1 py-1 justify-start rounded-full border-[2px]">
-							<p class="text-black w-[78px] h-5 text-center font-bold">4:20 p.m.</p>
-						</button>
-					</li>
-				</ul>
-			</div>
-		</section>
-
 	</section>
-
-
-
-	<footer class="bg-gradient-to-b from-[#9C6D46] to-[#684A31] py-8 w-full relative z-50">
+	<footer class="bg-gradient-to-b from-[#9C6D46] to-[#684A31] py-8 w-full relative z-50 max-sm:py-9">
 		<div id="footerItems" class="max-sm:pr-0">
 			<div class="flex pl-36 max-sm:pl-3 space-x-3">
 				<div class="space-y-1">
 					<div class="flex items-center">
-						<img src="./assets/icon/ayudar.png" class="w-4 mr-3" />
-						<a href="#" class="text-white max-sm:text-sm">Preguntas Frecuentes</a>
-					</div>
-					<div class="flex items-center">
 						<img src="./assets/icon/seguro.png" class="w-4 mr-3" />
 						<a href="#" class="text-white max-sm:text-sm">Politicas de la Empresa</a>
 					</div>
-					<div class="flex items-center">
+					<div class="flex items-center cursor-pointer" id="chatbot-ayuda-footer">
 						<img src="./assets/icon/apoyo (1).png" class="w-4 mr-3" />
-						<a href="#" class="text-white max-sm:text-sm">Atencion al Cliente</a>
+						<p class="text-white max-sm:text-sm">Atencion al Cliente</p>
 					</div>
 				</div>
 				<div class="space-y-1">
 					<div class="flex items-center">
 						<img src="./assets/icon/grupo.png" class="w-4 mr-3" />
-						<a href="#" class="text-white max-sm:text-sm">Creadores de la página</a>
+						<a href="./integrantes.html" class="text-white max-sm:text-sm">Creadores de la página</a>
 					</div>
 					<div class="flex items-center">
 						<img src="./assets/icon/seguridad.png" class="w-4 mr-3" />
@@ -460,9 +398,13 @@
 			</a>
 		</div>
 	</footer>
-	<script src="./assets/js/home.js"></script>
 	<script src="./assets/js/chatbot.js"></script>
 	<script src="./assets/js/header.js"></script>
 </body>
-
+<script>
+	function getHora() {
+		let hora = document.getElementById("b1");
+		sessionStorage.hora = hora.innerHTML;
+	}
+</script>
 </html>

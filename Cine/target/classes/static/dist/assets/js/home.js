@@ -131,43 +131,49 @@ function scrollDer() {
 }
 document.addEventListener('DOMContentLoaded', function () {
     const usuarioDataString = sessionStorage.getItem('usuarioData');
-    const botonPerfil = document.getElementById('perfilUsuarioBtn');
-    const imagenPerfil = document.getElementById('perfilUsuario');
+    const guestSlide = document.getElementById('guest-slide');
+    const userSlide = document.getElementById('user-slide');
+    const perfilUsuario = document.getElementById('perfilUsuario');
 
     if (usuarioDataString) {
-        const usuarioData = JSON.parse(usuarioDataString);
+        guestSlide.style.display = 'none';
+        userSlide.style.display = 'block';
 
+        const usuarioData = JSON.parse(usuarioDataString);
         const usernamePlaceholder = document.getElementById('usernamePlaceholder');
         if (usernamePlaceholder) {
             usernamePlaceholder.innerText = `${usuarioData.nombre} ${usuarioData.apellido}`;
         }
-    } 
+
+        const rutaImagenPerfil = sessionStorage.getItem('rutaImagenPerfil');
+        if (perfilUsuario && rutaImagenPerfil) {
+            perfilUsuario.src = rutaImagenPerfil;
+        }
+    } else {
+        guestSlide.style.display = 'block';
+        userSlide.style.display = 'none';
+    }
+
+    const irPerfilUsuarioBtn = document.getElementById('perfilUsuarioBtn');
+    if (irPerfilUsuarioBtn) {
+        irPerfilUsuarioBtn.addEventListener('click', irAPerfilUsuario);
+    }
+
+    const logoutButton = document.getElementById('logoutButton');
+    if (logoutButton) {
+        logoutButton.addEventListener('click', function () {
+            sessionStorage.removeItem('usuarioData');
+            sessionStorage.removeItem('rutaImagenPerfil');
+            window.location.href = './home.html';
+        });
+    }
 });
 
 function irAPerfilUsuario() {
     const usuarioDataString = sessionStorage.getItem('usuarioData');
-    
     if (usuarioDataString) {
         window.location.href = './perfil-usuario.html';
     } else {
         window.location.href = './inicio-sesion.html';
     }
 }
-
-document.addEventListener('DOMContentLoaded', function () {
-    const rutaImagenPerfil = localStorage.getItem('rutaImagenPerfil');
-    
-    const perfilUsuario = document.getElementById('perfilUsuario');
-    if (perfilUsuario && rutaImagenPerfil) {
-        perfilUsuario.src = rutaImagenPerfil;
-    }
-});
-
-document.addEventListener('DOMContentLoaded', function () {
-    const rutaImagenPerfil = localStorage.getItem('rutaImagenPerfil');
-    
-    const perfilUsuario = document.getElementById('perfilUsuario');
-    if (perfilUsuario && rutaImagenPerfil) {
-        perfilUsuario.src = rutaImagenPerfil;
-    }
-});

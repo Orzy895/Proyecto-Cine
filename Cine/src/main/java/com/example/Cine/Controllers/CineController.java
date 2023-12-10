@@ -1,6 +1,5 @@
 package com.example.Cine.Controllers;
 
-
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
@@ -19,17 +18,22 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.Cine.Services.CineDb;
 import com.example.Cine.modelos.Actor;
-import com.example.Cine.modelos.Director;
 import com.example.Cine.modelos.Pelicula;
 import com.example.Cine.modelos.SucursalesPelicula;
 import com.example.Cine.modelos.Usuarios;
+import com.example.Cine.modelos.Cartelera;
+import com.example.Cine.modelos.Director;
+import com.example.Cine.modelos.PasoQr;
+import com.example.Cine.modelos.QrLink;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+
 
 @RestController
 public class CineController {
 
     private final ObjectMapper objectMapper = new ObjectMapper();
-    private final CineDb cineDb = new CineDb();  
+    private final CineDb cineDb = new CineDb(); // Instantiate CineDb
 
     // Inicio de sesion
     @PostMapping("/Cine/login")
@@ -79,8 +83,6 @@ public class CineController {
         }
     }
 
-
-
     @PostMapping("Cine/agregar")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<Integer> agregarPelicula(@RequestBody Pelicula pelicula) {
@@ -89,12 +91,12 @@ public class CineController {
         id = cineDb.agregarPelicula(pelicula);
         return ResponseEntity.ok(id);
     }
+
     @GetMapping("Cine/peliculas")
     public List<Pelicula> cargarTodasLasPeliculas() {
         CineDb cineDb = new CineDb();
         return cineDb.obtenerTodasLasPeliculas();
     }
-
 
     @GetMapping("Cine/{id_pelicula}")
     public Pelicula buscarPeli(@PathVariable("id_pelicula") int idPelicula) {
@@ -114,7 +116,6 @@ public class CineController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
-
     @GetMapping("/Cine/actores/{idPelicula}")
     public List<Actor> cargarActoresPorPelicula(@PathVariable int idPelicula) {
         CineDb cineDb = new CineDb();
@@ -133,7 +134,6 @@ public class CineController {
         return cineDb.obtenerSucursalesPorPelicula(idPelicula);
     }
 
-
     @DeleteMapping("/Cine/eliminarPelicula/{idPelicula}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public ResponseEntity<Void> eliminarPelicula(@PathVariable String idPelicula) {
@@ -141,8 +141,6 @@ public class CineController {
         cineDb.eliminarPelicula(idPelicula);
         return ResponseEntity.noContent().build();
     }
-    
-    
     @PostMapping("/Cine/agregarDirector")
     public ResponseEntity<String> agregarDirector(@RequestBody Director director) {
         boolean resultado = cineDb.agregarDirector(director);
@@ -174,7 +172,6 @@ public class CineController {
             return new ResponseEntity<>("Error: Película no encontrada", HttpStatus.NOT_FOUND);
         }
     }
-
     @PutMapping("/Cine/actualizarActor/{idActor}")
     public ResponseEntity<String> actualizarActor(@PathVariable int idActor, @RequestBody Actor actorActualizado) {
         CineDb cineDb = new CineDb();
@@ -200,16 +197,15 @@ public class CineController {
         }
     }
 
+     @PutMapping("/Cine/actualizarEstadoSucursal/")
+    public ResponseEntity<String> actualizarEstadoSucursal(@RequestBody SucursalesPelicula Sucursales_Pelicula) {
 
-    @DeleteMapping("/Cine/eliminarSucursalPorPelicula/{idPelicula}")
-    public ResponseEntity<String> eliminarSucursalPorPelicula(@PathVariable int idPelicula) {
-        CineDb cineDb = new CineDb();
-        boolean resultado = cineDb.eliminarSucursalPorPelicula(idPelicula);
+        boolean result = cineDb.actualizarEstadoSucursalPorPelicula(Sucursales_Pelicula);
 
-        if (resultado) {
-            return new ResponseEntity<>("Sucursal eliminada con éxito", HttpStatus.OK);
+        if (result) {
+            return ResponseEntity.ok("Estado de sucursales actualizado con éxito");
         } else {
-            return new ResponseEntity<>("Error: No se encontró la sucursal para la película", HttpStatus.NOT_FOUND);
+            return ResponseEntity.badRequest().body("Error al actualizar el estado de las sucursales");
         }
     }
 
@@ -217,4 +213,37 @@ public class CineController {
     public List<Pelicula> obtenerPeliculasPorSucursal(@PathVariable int idSucursal) {
         return cineDb.obtenerPeliculasPorSucursal(idSucursal);
     }
+    // Obtener información de cartelera
+
+    @GetMapping("/Cine/cartelera")
+    public List<Cartelera> getCartelera(){
+        CineDb cineDb = new CineDb();
+        return cineDb.getCartelera();
+    }
+
+    // Obtener información de paso 1
+
+    // Obtener información de paso 2
+
+    // Obtener información de paso 3
+
+    // Obtener información de paso 4 compra-finalqr
+
+
+    @GetMapping("/Cine/datosQr/{codigoConfirmacion}")
+    public PasoQr getDatosqr(@PathVariable("codigoConfirmacion") String codigoConfirmacion) {
+        CineDb cineDb = new CineDb();
+        return cineDb.getDatosqr(codigoConfirmacion);
+    }
+
+    // Para la pagina destino cuando escaneen el qr
+    @GetMapping("/Cine/qr_target/{codigoConfirmacion}")
+    public QrLink getObjLink(@PathVariable("codigoConfirmacion") String codigoConfirmacion) {
+        CineDb cineDb = new CineDb();
+        return cineDb.getQrLink(codigoConfirmacion);
+    }
+
+
+
+
 }

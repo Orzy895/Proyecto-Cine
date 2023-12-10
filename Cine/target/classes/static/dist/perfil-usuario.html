@@ -63,7 +63,7 @@
                     <p class="mt-2">Bienvenido a Filmania</p>
                     <button onclick="window.location.href='./inicio-sesion.html'"
                         class="mt-4 bg-[#996c45] w-40 py-2 rounded-full font-bold">Perfil</button>
-                    <button onclick="window.location.href='./registro.html'"
+                    <button id="logoutButton" onclick="window.location.href='./home.html'"
                         class="mt-4 bg-[#996c45] w-40 py-2 rounded-full font-bold">Cerrar Sesión</button>
                 </div>
             </div>
@@ -79,6 +79,9 @@
                             <h1 class="font-serif text-xl">ELIGE TU FOTO DE PERFIL</h1>
                         </div>
                         <div class="flex flex-wrap overflow-y-scroll">
+                            <img src="./assets/icon/usuario.png"
+                                class="rounded-full h-20 w-20 cursor-pointer" style="margin: 15px;"
+                                onclick="cambiarFotoPerfil(this)">
                             <img src="./assets/img/img-user/03ebf92e-0754-48d6-8582-74e7713b1132.jpeg"
                                 class="rounded-full h-20 w-20 cursor-pointer" style="margin: 15px;"
                                 onclick="cambiarFotoPerfil(this)">
@@ -172,56 +175,47 @@
                     <h1 class="text-white font-bold text-2xl text-center md:text-3xl">Peliculas Vistas</h1>
                     <div class="flex items-center justify-center mb-2 gap-2 md:gap-4">
                         <div class="relative">
-                            <img src="./assets/img/img-home/carrusel1.png" alt=""
-                                class="w-[100px] h-[100px] sm:w-[120px] sm:h-[80px] md:w-[210px] md:h-[150px] object-cover">
+                            <iframe class="w-[100px] h-[100px] sm:w-[120px] sm:h-[80px] md:w-[210px] md:h-[150px] object-cover" src="https://www.youtube.com/embed/yrLGxJVn8Co?si=noKq9-H8jb89BkxQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                             <p class="text-white absolute right-0 left-0 text-center text-xs font-bold   mt-1 md:text-sm lg:text-base">CARS</p>
                         </div>
                         <div class="relative ">
-                            <img src="./assets/img/img-home/carrusel1.png" alt=""
-                                class="w-[100px] h-[100px] sm:w-[120px] sm:h-[80px] md:w-[210px] md:h-[150px] object-cover">
+                            <iframe class="w-[100px] h-[100px] sm:w-[120px] sm:h-[80px] md:w-[210px] md:h-[150px] object-cover" src="https://www.youtube.com/embed/NGW9364YMnE?si=a1SdW_K32V2zVTNM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                             <p class="text-white absolute right-0 left-0 text-center text-xs font-bold   mt-1 md:text-sm lg:text-base">INCEPTION
                             </p>
                         </div>
                         <div class="relative ">
-                            <img src="./assets/img/img-home/carrusel1.png" alt=""
-                                class="w-[100px] h-[100px] sm:w-[120px] sm:h-[80px] md:w-[210px] md:h-[150px] object-cover">
+                            <iframe class="w-[100px] h-[100px] sm:w-[120px] sm:h-[80px] md:w-[210px] md:h-[150px] object-cover" src="https://www.youtube.com/embed/yrLGxJVn8Co?si=noKq9-H8jb89BkxQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                             <p class="text-white absolute right-0 left-0 text-center text-xs font-bold   mt-1 md:text-sm lg:text-base">OPPENHEIMER
                             </p>
                         </div>
                     </div>
                     <div class="flex items-center justify-center gap-2 md:gap-4">
                         <div class="relative ">
-                            <img src="./assets/img/img-home/carrusel2.jpg" alt=""
-                                class="w-[100px] h-[100px] sm:w-[120px] sm:h-[80px] md:w-[210px] md:h-[150px] object-cover">
+                            <iframe class="w-[100px] h-[100px] sm:w-[120px] sm:h-[80px] md:w-[210px] md:h-[150px] object-cover" src="https://www.youtube.com/embed/yrLGxJVn8Co?si=noKq9-H8jb89BkxQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                             <p class="text-white absolute right-0 left-0 text-center text-xs font-bold   mt-1 md:text-sm lg:text-base">AKIRA</p>
                         </div>
                         <div class="relative ">
-                            <img src="./assets/img/img-home/carrusel2.jpg" alt=""
-                                class="w-[100px] h-[100px] sm:w-[120px] sm:h-[80px] md:w-[210px] md:h-[150px] object-cover">
+                            <iframe class="w-[100px] h-[100px] sm:w-[120px] sm:h-[80px] md:w-[210px] md:h-[150px] object-cover" src="https://www.youtube.com/embed/yrLGxJVn8Co?si=noKq9-H8jb89BkxQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                             <p class="text-white absolute right-0 left-0  text-center text-xs font-bold  mt-1 md:text-sm lg:text-base">PRINCESS MONONOKE</p>
                         </div>
                         <div class="relative ">
-                            <img src="./assets/img/img-home/carrusel2.jpg" alt=""
-                                class="w-[100px] h-[100px] sm:w-[120px] sm:h-[80px] md:w-[210px] md:h-[150px] object-cover">
+                            <iframe class="w-[100px] h-[100px] sm:w-[120px] sm:h-[80px] md:w-[210px] md:h-[150px] object-cover" src="https://www.youtube.com/embed/yrLGxJVn8Co?si=noKq9-H8jb89BkxQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                             <p class="text-white absolute right-0 left-0 text-center text-xs font-bold   mt-1 md:text-sm lg:text-base">STAR WARS ROGUE ONE</p>
                         </div>
                     </div>
-                    <button class="font-medium text-xl mt-10 md:text-2xl    ">VER MÁS</button>
+                    <button class="font-medium text-xl mt-10 md:text-2xl    "></button>
                 </div>
             </section>
-            <section style="display: none;" id="reporte">
-                <div class="h-full bg-gray-300 bg-opacity-40 rounded-3xl" style="margin-left: 40px; width: 800px;">
-                    <div class="text-xl font-serif font-bold h-full flex space-x-3 justify-center items-center">
-                        <div class="w-80 bg-white rounded-3xl text-center" style="height: 335px;">
-                            <img class="relative h-64 w-64" style="left: 32px;"
-                                src="./assets/img/WhatsApp_Image_2023-11-04_at_1.04.33_PM-transformed-removebg-preview.png">
-                            <p>Reportes</p>
-                        </div>
-                        <div class="w-80 bg-white rounded-3xl text-center" style="height: 335px;">
-                            <img class="relative h-64 w-64" style="left: 32px;"
-                                src="./assets/img/formulario (1).png">
-                            <p>Formulario</p>
-                        </div>
+           
+            <section style="display: none;"  id="reporte" class="text-white rounded-[60px] mt-8 max-sm:mr-0 mr-20 p-4 bg-gray-50 bg-opacity-40">
+                <div class="flex h-full align-middle p-4  gap-4 flex-col md:flex-row">
+                    <div onclick="redirectToReporte()" class="bg-white w-full justify-center  items-center rounded-3xl p-4  mx-auto flex flex-col ">
+                        <img class=" h-64 w-64  " src="./assets/img/WhatsApp_Image_2023-11-04_at_1.04.33_PM-transformed-removebg-preview.png" alt="Imagen 1">
+                        <p class="text-black text-center">Reportes</p>
+                    </div>
+                    <div onclick="redirectToFormulario()" class=" bg-white w-full  items-center rounded-3xl p-4  mx-auto flex flex-col h-full justify-center">
+                        <img class="  h-64 w-64 " src="./assets/img/formulario (1).png" alt="Imagen 2">
+                        <p class="text-black text-center">Reportes</p>
                     </div>
                 </div>
             </section>

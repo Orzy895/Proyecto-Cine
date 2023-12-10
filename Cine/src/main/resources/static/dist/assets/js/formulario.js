@@ -198,6 +198,7 @@ function MapearPeliculas(pelicula){
                     <button onclick="mostrarAddPeli('editarBtn', ${pelicula.idPelicula})" id="editarBtn" class="flex justify-center items-center">
                         <img class="w-5 h-5 hover:w-6 hover:h-6 max-sm:rotate-90 transition-all duration-300 "
                         src="/Cine/src/main/resources/static/dist/assets/icon/lapiz-editar.svg" alt="">
+                        
                     </button>
                 </div>
             </div>
@@ -606,7 +607,7 @@ function cargarActores(idPeli) {
 function mostrarActores(actores) {
     let containerActor = document.getElementById('containerActor');
     containerActor.innerHTML = "";
-    
+    contActorGuardado = actoresOriginales.length;
     for (let i = 0; i < actores.length; i++) {
         let actor = actores[i];
         
@@ -755,7 +756,7 @@ function agregarActores(accion){
     actoresData ={
       "actores": []
     };
-    contActorGuardado = actoresOriginales.length;
+
     if(accion === 'editarBtn'){
         for(let i = 0 ; i < contActorGuardado ; i++){
             let nombre = document.getElementById(`actorNombre${i+1}`).value;
@@ -851,7 +852,21 @@ function agregarActoresEnBaseDeDatos(nuevaPeli){
             console.error('Error en la solicitud:', error);
         });
     }
-
+    fetch(`${urlbase}/Cine/eliminarActoresPelicula/${nuevaPeli}`, {
+        method: 'DELETE',
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`Error al eliminar asociaciones de actores: ${response.status}`);
+        }
+        for (let i = 0; i < actoresData.actores.length; i++) {
+            let actor = actoresData.actores[i];
+            
+        }
+    })
+    .catch(error => {
+        console.error('Error en la solicitud Fetch:', error);
+    });
     
 }
 function agregarActorIndividual(idPeli, actor){
@@ -918,7 +933,20 @@ function agregarDirectoresEnBaseDeDatos(nuevaPeli){
             console.error('Error en la solicitud:', error);
         });
     }
-
+    fetch(`${urlbase}/Cine/eliminarDirectoresPelicula/${nuevaPeli}`, {
+        method: 'DELETE',
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`Error al eliminar asociaciones de directores: ${response.status}`);
+        }
+        for (let i = 0; i < directoresData.directores.length; i++) {
+            let director = directoresData.directores[i];
+        }
+    })
+    .catch(error => {
+        console.error('Error en la solicitud Fetch:', error);
+    });
     
 }
 
@@ -955,17 +983,14 @@ function agregarDirectorIndividual(nuevaPeli, director){
 }
 
 function agregarSucursalesEnBaseDatosDeDatos(nuevaPeli) {
-
-    
     for (let i = 0; i < sucursales.length; i++) {
         let id_sucursal = sucursales[i].idSucursal;
-        
+
         const enviarSucursal = {
             "idSucursal": id_sucursal,
             "idPelicula": nuevaPeli
         };
 
-     
         fetch(`${urlbase}/Cine/agregarSucursalesPelicula`, {
             method: 'POST',
             headers: {
@@ -986,6 +1011,25 @@ function agregarSucursalesEnBaseDatosDeDatos(nuevaPeli) {
             console.error('Error en la solicitud Fetch:', error);
         });
     }
+    fetch(`${urlbase}/Cine/eliminarSucursalesPelicula/${nuevaPeli}`, {
+        method: 'DELETE',
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`Error al eliminar asociaciones de sucursales: ${response.status}`);
+        }
+        for (let i = 0; i < sucursales.length; i++) {
+            let id_sucursal = sucursales[i].idSucursal;
+            const enviarSucursal = {
+                "idSucursal": id_sucursal,
+                "idPelicula": nuevaPeli
+            };
+        }
+    })
+    .catch(error => {
+        console.error('Error en la solicitud Fetch:', error);
+    });
+
 }
 
 //Ocultar la ventana de añadir/editar peliculas
@@ -1153,39 +1197,48 @@ function scrollASeccion(idSeccion) {
 
 document.addEventListener('DOMContentLoaded', function () {
     const usuarioDataString = sessionStorage.getItem('usuarioData');
-    const botonPerfil = document.getElementById('perfilUsuarioBtn');
-    const imagenPerfil = document.getElementById('perfilUsuario');
+    const guestSlide = document.getElementById('guest-slide');
+    const userSlide = document.getElementById('user-slide');
+    const perfilUsuario = document.getElementById('perfilUsuario');
 
     if (usuarioDataString) {
-        const usuarioData = JSON.parse(usuarioDataString);
-        botonPerfil.style.display = 'block';
-        imagenPerfil.style.display = 'block';
+        guestSlide.style.display = 'none';
+        userSlide.style.display = 'block';
 
+        const usuarioData = JSON.parse(usuarioDataString);
         const usernamePlaceholder = document.getElementById('usernamePlaceholder');
         if (usernamePlaceholder) {
             usernamePlaceholder.innerText = `${usuarioData.nombre} ${usuarioData.apellido}`;
         }
+
+        const rutaImagenPerfil = sessionStorage.getItem('rutaImagenPerfil');
+        if (perfilUsuario && rutaImagenPerfil) {
+            perfilUsuario.src = rutaImagenPerfil;
+        }
     } else {
-        botonPerfil.style.display = 'block';
-        imagenPerfil.style.display = 'block';
+        guestSlide.style.display = 'block';
+        userSlide.style.display = 'none';
+    }
+
+    const irPerfilUsuarioBtn = document.getElementById('perfilUsuarioBtn');
+    if (irPerfilUsuarioBtn) {
+        irPerfilUsuarioBtn.addEventListener('click', irAPerfilUsuario);
+    }
+
+    const logoutButton = document.getElementById('logoutButton');
+    if (logoutButton) {
+        logoutButton.addEventListener('click', function () {
+            sessionStorage.removeItem('usuarioData');
+            sessionStorage.removeItem('rutaImagenPerfil');
+        });
     }
 });
 
 function irAPerfilUsuario() {
     const usuarioDataString = sessionStorage.getItem('usuarioData');
-    
     if (usuarioDataString) {
         window.location.href = './perfil-usuario.html';
     } else {
         window.location.href = './inicio-sesion.html';
     }
 }
-
-document.addEventListener('DOMContentLoaded', function () {
-    const rutaImagenPerfil = localStorage.getItem('rutaImagenPerfil');
-    
-    const perfilUsuario = document.getElementById('perfilUsuario');
-    if (perfilUsuario && rutaImagenPerfil) {
-        perfilUsuario.src = rutaImagenPerfil;
-    }
-});

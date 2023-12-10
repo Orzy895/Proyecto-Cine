@@ -183,35 +183,60 @@ function obtenerUsuarioId() {
     const usuarioDataString = sessionStorage.getItem('usuarioData');
     if (usuarioDataString) {
         const usuarioData = JSON.parse(usuarioDataString);
-        return usuarioData.id_usuario;
+        return usuarioData.id_usuario || null;  // Asegúrate de manejar el caso donde id_usuario puede ser nulo
     }
     return null;
 }
 
+function restaurarFotoPerfilOriginal() {
+    const perfilUsuario = document.getElementById('perfilUsuario');
+    if (perfilUsuario) {
+        perfilUsuario.src = "./assets/icon/usuario.png";
+    }
+
+    // Reset selector image to default
+    const selectorImage = document.getElementById('selectorImage');
+    if (selectorImage) {
+        selectorImage.src = "./assets/icon/usuario.png";
+    }
+}
 
 function cambiarFotoPerfil(imagenSeleccionada) {
     const nuevaRutaImagen = imagenSeleccionada.src;
 
-    
     const fotoPerfil = document.getElementById('fotoperfil');
     if (fotoPerfil) {
         fotoPerfil.src = nuevaRutaImagen;
     }
 
-    
-    localStorage.setItem('rutaImagenPerfil', nuevaRutaImagen);
+    sessionStorage.setItem('rutaImagenPerfil', nuevaRutaImagen);
 
-   
     const perfilUsuario = document.getElementById('perfilUsuario');
     if (perfilUsuario) {
         perfilUsuario.src = nuevaRutaImagen;
     }
+
+    // Update selector image
+    const selectorImage = document.getElementById('selectorImage');
+    if (selectorImage) {
+        selectorImage.src = nuevaRutaImagen;
+    }
 }
+
 document.addEventListener('DOMContentLoaded', function () {
-    const rutaImagenPerfil = localStorage.getItem('rutaImagenPerfil');
-   
+    const rutaImagenPerfil = sessionStorage.getItem('rutaImagenPerfil');
     const perfilUsuario = document.getElementById('perfilUsuario');
+
     if (perfilUsuario && rutaImagenPerfil) {
         perfilUsuario.src = rutaImagenPerfil;
+    } else {
+        restaurarFotoPerfilOriginal();
     }
 });
+function redirectToReporte() {
+    window.location.href = 'reporte.html';
+}
+
+function redirectToFormulario() {
+    window.location.href = 'formulario.html';
+}

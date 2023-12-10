@@ -59,13 +59,13 @@
             </div>
             <div
                 class="user-container flex items-center w-44 h-12 justify-center relative space-x-2 max-sm:m-0 max-sm:space-x-0 max-sm:w-32">
-                <div onclick="window.location.href='./perfil-usuario.html'" class="ml-4 cursor-pointer max-sm:ml-0">
-                    <img src="./assets/icon/usuario.png"
+                <div id="perfilUsuarioBtn" onclick="irAPerfilUsuario()" class="ml-4 cursor-pointer max-sm:ml-0">
+                    <img id="perfilUsuario" class="rounded-full h-10 w-10 cursor-pointer" src="./assets/icon/usuario.png"
                         class="w-auto h-10 max-sm:h-10">
                 </div>
                 <div class="flex max-sm:hidden">
                     <div class="cursor-pointer">
-                        <p class="text-lg font-semibold">Username</p>
+                        <p id="usernamePlaceholder" class="text-lg font-semibold">Username</p>
                     </div>
                     <div onclick="userLogged()" class="absolute right-0 bottom-3 cursor-pointer ">
                         <svg class="w-5 h-5 ml-2 -mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -85,12 +85,13 @@
                         class="mt-2 bg-[#996c45] w-40 py-2 rounded-full font-bold">Registrese</button>
                 </div>
                 <div id="user-slide"
-                    class="absolute w-52 h-44 bg-white top-12 right-[-10px] z-50 rounded-lg hidden text-center">
+                    class="absolute w-52 h-44 bg-white top-12 right-[-10px] z-50 rounded-lg hidden text-center " >
                     <p class="mt-2">Bienvenido a Filmania</p>
                     <button onclick="window.location.href='./perfil-usuario.html'"
                         class="mt-4 bg-[#996c45] w-40 py-2 rounded-full font-bold">Perfil</button>
-                    <button onclick="" class="mt-4 bg-[#996c45] w-40 py-2 rounded-full font-bold">Cerrar Sesión</button>
+                    <button id="logoutButton" onclick="" class="mt-4 bg-[#996c45] w-40 py-2 rounded-full font-bold" >Cerrar Sesión</button>
                 </div>
+            </div>
             </div>
         </section>
         <!--seccion de ubicacion-->
@@ -147,14 +148,14 @@
     <section class="mt-[20px] mb-20 text-white mx-auto text-xs w-[90%]">
         <!--IMAGEN GRANDE-->
         <header class="relative">
-            <h1 class="bg-gradient-to-b from-[#9C6D46] to-[#684A31] pl-2 py-1 sm:text-xl lg:text-2xl">Spider-Man Across the Spiderverse</h1>
+            <h1 id="titulo-pelicula" class="bg-gradient-to-b from-[#9C6D46] to-[#684A31] pl-2 py-1 sm:text-xl lg:text-2xl">Spider-Man Across the Spiderverse</h1>
             <div class="relative flex justify-center items-center">
-                <img src="../dist/assets/img/img-infoPeli/spider.jpg"
+                <img id="backgroundImage" src="../dist/assets/img/img-infoPeli/spider.jpg"
                     class="mx-auto w-full object-cover h-[150px] sm:h-96">
-                <img src="../dist/assets/img/img-infoPeli/play-48.png" class="absolute w-8 " alt="playbutton">
+                <a href="" class="absolute w-8 " id="play-button"><img  src="../dist/assets/img/img-infoPeli/play-48.png" class="absolute w-8 " alt="playbutton"></a>
             </div>
             <div class="absolute flex gap-1 bottom-5 right-2">
-                <p class="bg-[#45382E] px-3 py-1 rounded-lg opacity-80">2h 24m</p>
+                <p id="duracion-pelicula" class="bg-[#45382E] px-3 py-1 rounded-lg opacity-80">2h 24m</p>
                 <p class="bg-[#45382E] px-3 py-1 rounded-lg opacity-80">+10</p>
             </div>
         </header>
@@ -163,20 +164,16 @@
         <section class="flex flex-col items-center gap-10 sm:gap-0">
             <!--IMAGEN MEDIANA-->
             <div class="flex flex-col justify-center items-center gap-5 sm:flex-row sm:items-start">
-                <img src="../dist/assets/img/img-infoPeli/trailer.jpg" alt="" class="w-[85%] max-w-[300px] -mt-3 z-10 sm:-mt-20 sm:ml-7 md:max-w-[400px]">
+                <img id="imagen-pelicula" src="../dist/assets/img/img-infoPeli/trailer.jpg" alt="" class="w-[85%] max-w-[300px] -mt-3 z-10 sm:-mt-20 sm:ml-7 md:max-w-[400px]">
                 <!--Informacion de la Peli-->
                 <div class="md:text-base lg:text-xl">
                     <div class="sm:flex sm:justify-between sm:items-center sm:my-6">
-                        <h2 class="hidden sm:block">------- About -------</h2>
+                        <h2 id="genero" class="hidden sm:block">------- About -------</h2>
                         <ul class="flex justify-center gap-1">
-                            <li><img src="../dist/assets/img/img-infoPeli/star-regular.svg" class="w-5 md:w-7"></li>
-                            <li><img src="../dist/assets/img/img-infoPeli/star-regular.svg" class="w-5 md:w-7"></li>
-                            <li><img src="../dist/assets/img/img-infoPeli/star-regular.svg" class="w-5 md:w-7"></li>
-                            <li><img src="../dist/assets/img/img-infoPeli/star-regular.svg" class="w-5 md:w-7"></li>
-                            <li><img src="../dist/assets/img/img-infoPeli/star-regular.svg" class="w-5 md:w-7"></li>
+                            <p id="calificacion"></p><li><img src="../dist/assets/img/img-infoPeli/star-regular.svg" class="w-5 md:w-7"></li>
                         </ul>
                     </div>
-                    <div class="text-center">
+                    <div id="informacion-pelicula" class="text-center">
                         <h2 class="my-6 sm:hidden">------- About -------</h2>
                         <p class="text-justify">After reuniting with Gwen Stacy, Brooklyn's full-time, friendly
                             neighborhood Spider-Man is catapulted across the Multiverse, where he encounters a team of
@@ -198,15 +195,11 @@
         <!--Slider-->
         <section class="md:text-base lg:text-xl">
             <h2>Directed By</h2>
-            <div class="flex flex-wrap gap-2">
-                <p>Joaquin Dos Santos, </p>
-                <p>Komp Powers,</p>
-                <p>Justin K Thompson,</p>
-                <p>Christopher Miller,</p>
-                <p>David Callaham</p>
+            <div id="container-directores" class="flex flex-wrap gap-2">
+
             </div>
             <h2 class="mt-3">CAST:</h2>
-            <section class="flex items-center justify-center h-full mt-6">
+            <section id="container-actores" class="flex items-center justify-center h-full mt-6">
 
                 <div id="container" class="max-w-[1200px] w-[75%]">
                     <div class="slider-wrapper relative">
@@ -214,26 +207,7 @@
                             class="material-symbols-rounded slide-button absolute left-[-35px] top-2/4 outline-none border-none scale-150 z-[5] text-white  text-[2.2rem]  items-center justify-center">chevron_left</button>
                         <ul
                             class="image-list grid grid-cols-[repeat(10,1fr)] gap-[18px] text-[0] overflow-x-auto scroll-w">
-                            <img class="image-item max-w-none w-[120px] h-[180px] object-cover md:w-[200px] md:h-[260px] lg:w-[220px] lg:h-[280px]"
-                                src="../dist/assets/img/img-infoPeli/Oscar.jpg">
-                            <img class="image-item max-w-none w-[120px] h-[180px] object-cover md:w-[200px] md:h-[260px] lg:w-[220px] lg:h-[280px] "
-                                src="../dist/assets/img/img-infoPeli/hailee.jpg">
-                            <img class="image-item max-w-none w-[120px] h-[180px] object-cover md:w-[200px] md:h-[260px] lg:w-[220px] lg:h-[280px] "
-                                src="../dist/assets/img/img-infoPeli/shameik.jpg">
-                            <img class="image-item max-w-none w-[120px] h-[180px] object-cover md:w-[200px] md:h-[260px] lg:w-[220px] lg:h-[280px] "
-                                src="../dist/assets/img/img-infoPeli/karan.jpg">
-                            <img class="image-item max-w-none w-[120px] h-[180px] object-cover md:w-[200px] md:h-[260px] lg:w-[220px] lg:h-[280px] "
-                                src="../dist/assets/img/img-infoPeli/Oscar.jpg">
-                            <img class="image-item max-w-none w-[120px] h-[180px] object-cover md:w-[200px] md:h-[260px] lg:w-[220px] lg:h-[280px] "
-                                src="../dist/assets/img/img-infoPeli/starwars.png">
-                            <img class="image-item max-w-none w-[120px] h-[180px] object-cover md:w-[200px] md:h-[260px] lg:w-[220px] lg:h-[280px] "
-                                src="../dist/assets/img/img-infoPeli/infinity war.jpg">
-                            <img class="image-item max-w-none w-[120px] h-[180px] object-cover md:w-[200px] md:h-[260px] lg:w-[220px] lg:h-[280px] "
-                                src="../dist/assets/img/img-infoPeli/joker.jpg">
-                            <img class="image-item max-w-none w-[120px] h-[180px] object-cover md:w-[200px] md:h-[260px] lg:w-[220px] lg:h-[280px] "
-                                src="../dist/assets/img/img-infoPeli/shrek.png">
-                            <img class="image-item max-w-none w-[120px] h-[180px] object-cover md:w-[200px] lg:w-[220px] lg:h-[280px]"
-                                src="../dist/assets/img/img-infoPeli/starwars.png">
+                            
                         </ul>
                         <button id="next-slide"
                             class="material-symbols-rounded slide-button absolute right-[-35px] top-2/4 outline-none border-none scale-150 z-[5] text-white flex text-[2.2rem] items-center justify-center">chevron_right</button>
