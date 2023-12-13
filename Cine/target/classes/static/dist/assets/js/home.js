@@ -1,6 +1,73 @@
 const urlbase = "http://127.0.0.1:8080";
 let ofertas = [];
 
+function obtenerPromocion(){
+    fetch(`${urlbase}/Cine/obtenerOfertas`)
+    .then(response => response.json())
+            .then(json => {
+                ofertas = json;
+                imprimirPromo();
+            })
+            .catch(error => {
+                console.error("Error al obtener las ofertas:", error);
+        });
+}
+
+function imprimirPromo(){
+    let carrusel1=document.getElementById('car1img');
+    let carrusel2=document.getElementById('car2img');
+    let carrusel3=document.getElementById('car3img');
+    let carrusel4=document.getElementById('car4img');
+    let contenedor2=document.getElementById('promo1');
+    let contenedor3=document.getElementById('promo2');
+
+    carrusel1.src=ofertas[0].foto_inte;
+    carrusel2.src=ofertas[1].foto_inte;
+    carrusel3.src=ofertas[2].foto_inte;
+    carrusel4.src=ofertas[3].foto_inte;
+
+    contenedor2.innerHTML="";
+    contenedor3.innerHTML="";
+
+    
+
+    contenedor2.innerHTML=`
+    <!--imagen promocion-->
+						<img  class="w-full h-full object-cover max-sm:w-36"
+							src="${ofertas[4].foto_inte}" alt="" />
+						<div class="text-center max-sm:w-32 max-sm:whitespace-nowrap max-sm:text-ellipsis">
+							<!--info promociom-->
+							<p
+								class="text-white max-h-[100px] mb-6 font-bold text-lg py-4 max-sm:text-sm text-ellipsis overflow-hidden max-sm:px-2">
+								${ofertas[4].titulo} </br>
+                                ${ofertas[4].detalles}
+							</p>
+							<!--boton de mas informacion-->
+							<a href=""
+								class="text-white font-bold text-lg bg-black rounded-lg cursor-pointer px-3 py-2 max-sm:text-sm">Más
+								info</a>
+						</div>
+    `;
+
+    contenedor3.innerHTML=`
+    <!--imagen promocion-->
+						<img  class="w-full h-full object-cover max-sm:w-36"
+							src="${ofertas[5].foto_inte}" alt="" />
+						<div class="text-center max-sm:w-32 max-sm:whitespace-nowrap max-sm:text-ellipsis">
+							<!--info promociom-->
+							<p
+								class="text-white max-h-[100px] mb-6 font-bold text-lg py-4 max-sm:text-sm text-ellipsis overflow-hidden max-sm:px-2">
+								${ofertas[5].titulo} </br>
+                                ${ofertas[5].detalles}</br></br>
+							</p>
+							<!--boton de mas informacion-->
+							<a href=""
+								class="text-white font-bold text-lg bg-black rounded-lg cursor-pointer px-3 py-2 max-sm:text-sm">Más
+								info</a>
+						</div>
+    `;
+}
+
 // Variable to track the current image in the carousel
 let carruselCurrent = 1;
 
@@ -60,7 +127,7 @@ function uncheck() {
 // Function to go to the next image in the carousel
 function siguiente() {
     hide(carruselCurrent);
-    if (carruselCurrent == 5) {
+    if (carruselCurrent == 4) {
         carruselCurrent = 1;
     } else {
         carruselCurrent += 1;
@@ -73,7 +140,7 @@ function siguiente() {
 function atras() {
     hide(carruselCurrent);
     if (carruselCurrent == 1) {
-        carruselCurrent = 5;
+        carruselCurrent = 4;
     } else {
         carruselCurrent -= 1;
     }
@@ -318,71 +385,3 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
-function obtenerPromocion(){
-    fetch(`${urlbase}/Cine/obtenerOfertas`)
-    .then(response => response.json())
-            .then(json => {
-                ofertas = json;
-                imprimirPromo();
-            })
-            .catch(error => {
-                console.error("Error al obtener las ofertas:", error);
-        });
-}
-
-function imprimirPromo(){
-    let contenedor=document.getElementById('carruselPromo');
-    let contenedor2=document.getElementById('promo1');
-    let contenedor3=document.getElementById('promo2');
-
-    contenedor.innerHTML="";
-    contenedor2.innerHTML="";
-    contenedor3.innerHTML="";
-
-    contenedor.innerHTML=`
-            <img src="${ofertas[0].foto_inte}" alt=""
-				class="block w-full h-full object-cover" id="car1img" />
-			<img src="${ofertas[1].foto_inte}" alt=""
-				class="hidden w-full h-full object-cover" id="car2img" />
-			<img src="${ofertas[2].foto_inte}" alt=""
-				class="hidden w-full h-full object-cover" id="car3img" />
-			<img src="${ofertas[3].foto_inte}" alt=""
-				class="hidden w-full h-full object-cover" id="car4img" />
-    `;
-
-    contenedor2.innerHTML=`
-    <!--imagen promocion-->
-						<img  class="w-full h-full object-cover max-sm:w-36"
-							src="${ofertas[4].foto_inte}" alt="" />
-						<div class="text-center max-sm:w-32 max-sm:whitespace-nowrap max-sm:text-ellipsis">
-							<!--info promociom-->
-							<p
-								class="text-white max-h-[100px] mb-6 font-bold text-lg py-4 max-sm:text-sm text-ellipsis overflow-hidden max-sm:px-2">
-								${ofertas[4].titulo} </br>
-                                ${ofertas[4].detalles}
-							</p>
-							<!--boton de mas informacion-->
-							<a href=""
-								class="text-white font-bold text-lg bg-black rounded-lg cursor-pointer px-3 py-2 max-sm:text-sm">Más
-								info</a>
-						</div>
-    `;
-
-    contenedor3.innerHTML=`
-    <!--imagen promocion-->
-						<img  class="w-full h-full object-cover max-sm:w-36"
-							src="${ofertas[5].foto_inte}" alt="" />
-						<div class="text-center max-sm:w-32 max-sm:whitespace-nowrap max-sm:text-ellipsis">
-							<!--info promociom-->
-							<p
-								class="text-white max-h-[100px] mb-6 font-bold text-lg py-4 max-sm:text-sm text-ellipsis overflow-hidden max-sm:px-2">
-								${ofertas[5].titulo} </br>
-                                ${ofertas[5].detalles}
-							</p>
-							<!--boton de mas informacion-->
-							<a href=""
-								class="text-white font-bold text-lg bg-black rounded-lg cursor-pointer px-3 py-2 max-sm:text-sm">Más
-								info</a>
-						</div>
-    `;
-}
