@@ -10,7 +10,7 @@
   <link rel="icon" href="./assets/icon/favicon.ico">
 </head>
 
-<body onload="obtenerpelis()" class="bg-gradient-to-b from-[#431B19] via-[#351918] to-[#261716]">
+<body onload="sumar()" class="bg-gradient-to-b from-[#431B19] via-[#351918] to-[#261716]">
   <header>
     <!--nav principal-->
     <nav class="bg-black max-sm:hidden">
@@ -134,24 +134,24 @@
               class="invisible absolute left-0 mt-2 bg-white border border-gray-300  rounded-md p-4 z-10">
               <!-- Contenido del dropdown con checkboxes y texto -->
               <label class="flex items-center mb-2 text-black ">
-                <input type="checkbox" class="mr-2"> 10% de Descuento por la compra de 2 boletos para adultos y 2 para
+                <input onclick="oferta(2)" type="checkbox" class="mr-2"> 10% de Descuento por la compra de 2 boletos para adultos y 2 para
                 niños(General)
               </label>
               <label class="flex items-center mb-2 text-black">
-                <input type="checkbox" class="mr-2"> 15% de Descuento por la compra de 2 boletos de adultos (General)
+                <input onclick="oferta(1)" type="checkbox" class="mr-2"> 15% de Descuento por la compra de 2 boletos de adultos (General)
               </label>
               <label class="flex items-center mb-2 text-black">
-                <input type="checkbox" class="mr-2"> 15% de Descuento por la compra de 3 boletos(black Clover)
+                <input onclick="oferta(4)" type="checkbox" class="mr-2"> 15% de Descuento por la compra de 3 boletos
               </label>
               <label class="flex items-center mb-2 text-black">
-                <input type="checkbox" class="mr-2"> 50% de Descuento por la compra de 1 boletos y el segundo es a mitad
-                de precio(FNF)
+                <input onclick="oferta(6)" type="checkbox" class="mr-2"> 50% de Descuento por la compra de 1 boletos y el segundo es a mitad
+                de precio(Terror)
               </label>
               <label class="flex items-center mb-2 text-black">
-                <input type="checkbox" class="mr-2"> a compra de 1 boletos y lleva a un amigo gratis (General)
+                <input onclick="oferta(5)" type="checkbox" class="mr-2"> Compra 4 boletos, paga 3 (Jujutsu Kaisen)
               </label>
               <label class="flex items-center mb-2 text-black">
-                <input type="checkbox" class="mr-2"> 25% de Descuento por la compra de 1 boletos (Transformers)
+                <input onclick="oferta(3)" type="checkbox" class="mr-2"> 25% de Descuento por la compra de 1 boletos (Transformers)
               </label>
 
               <!-- Botones Aceptar y Cancelar -->
@@ -164,8 +164,8 @@
             </div>
           </div>
 
-          <!-- Código en el password -->
-          <input id="passwordInput" type="text" required class="w-full px-3 py-2 border-b border-white bg-[#63432E]/50"
+          <!-- Código de oferta -->
+          <input id="codigoOferta" readonly type="text" class="w-full px-3 py-2 border-b border-white bg-[#63432E]/50"
             placeholder="Código">
 
           <div class="mb-3">

@@ -9,22 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.example.Cine.Services.CineDb;
-import com.example.Cine.modelos.Actor;
-import com.example.Cine.modelos.Asientos;
-import com.example.Cine.modelos.Boletos;
-import com.example.Cine.modelos.Boletos2;
-import com.example.Cine.modelos.Pelicula;
-import com.example.Cine.modelos.SucursalesPelicula;
-import com.example.Cine.modelos.Usuarios;
-import com.example.Cine.modelos.Cartelera;
-import com.example.Cine.modelos.Director;
-import com.example.Cine.modelos.Ingresos;
-import com.example.Cine.modelos.Ingresos2;
-import com.example.Cine.modelos.Ingresos3;
-import com.example.Cine.modelos.Oferta;
-import com.example.Cine.modelos.Ingresos2;
-import com.example.Cine.modelos.PasoQr;
-import com.example.Cine.modelos.QrLink;
+import com.example.Cine.modelos.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController

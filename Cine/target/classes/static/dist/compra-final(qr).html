@@ -221,7 +221,7 @@
             let boletos = document.getElementById("compra-boletos");
     
             confirmacion.innerHTML = codigoConfirmacion;
-            total.innerHTML = compraTotal + ".00";
+            total.innerHTML = formateado;
             sede.innerHTML = compra.sede;
             pelicula.innerHTML = compra.pelicula;
             sala.innerHTML = compra.sala;
@@ -249,11 +249,9 @@
         }
     
         // Calculo del total de compra
-        let compraTotal = ((Number(sessionStorage.adultoCantidad) +
-            Number(sessionStorage.ninoCantidad)) * 3)
-            + ((Number(sessionStorage.jubiladoCantidad) +
-                Number(sessionStorage.discapacitadoCantidad)) * 2);
-    
+        
+        let compraTotal = parseFloat(localStorage.getItem('total')) || 0;
+        let formateado = `$${compraTotal.toFixed(2)}`;
         let codigoConfirmacion = sessionStorage.codigoConfirmacion;
         let paginaVideo = targetUrl + "?cod=" + codigoConfirmacion;
     

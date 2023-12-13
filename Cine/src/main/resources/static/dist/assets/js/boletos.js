@@ -12,6 +12,14 @@ function siguiente(){
         alert("No ha seleccionado ningun boleto")
     }
     else{
+        localStorage.setItem('adulto',adulto)
+        localStorage.setItem('adultoMon',adultoMon)
+        localStorage.setItem('nino',nino)
+        localStorage.setItem('ninoMon',ninoMon)
+        localStorage.setItem('jubilado',jubilado)
+        localStorage.setItem('jubiladoMon',jubiladoMon)
+                localStorage.setItem('discapacitado',discapacitado)
+        localStorage.setItem('discapacitadoMon',discapacitadoMon)
         window.location.href="./compra-paso-2(asientos).html"
     }
 }

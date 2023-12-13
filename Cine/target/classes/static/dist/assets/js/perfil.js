@@ -217,4 +217,3 @@ document.addEventListener('DOMContentLoaded', function () {
         perfilUsuario.src = rutaImagenPerfil;
     }
 });
-}

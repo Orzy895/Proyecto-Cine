@@ -1,4 +1,7 @@
-let boletos = localStorage.getItem("boletos");
+const ticketState = localStorage.getItem("boletos");
+const { ticket: localStoredTicker } = JSON.parse(ticketState);
+const boletos = parseInt(storedTicket);
+console.log(boletos);
 let adulto = localStorage.getItem('adulto')
 let adultoMon = parseInt(localStorage.getItem('adultoMon'), 10) || 0;
 let nino = localStorage.getItem('nino')
@@ -11,29 +14,21 @@ let baseUrl = "http://localhost:8080"
 let pelicula = localStorage.getItem('pelicula')
 let genero = localStorage.getItem('genero')
 let ofertaAplicado = false;
+let total = 0;
 
 function sumar() {
-    let total = adultoMon + ninoMon + jubiladoMon + discapacitadoMon;
+    total = adultoMon + ninoMon + jubiladoMon + discapacitadoMon;
     localStorage.setItem('total', total)
     console.log(total)
 }
 
-function obtenerpelis() {
-    sumar()
-    fetch(baseUrl + '/Cine/peliculas').then(res => {
-        res.json().then(json => {
-            peliculas = json
-            console.log(peliculas)
-        })
-    })
-}
-
 function oferta(oferta) {
+    console.log(boletos)
     if (ofertaAplicado === false) {
         //el de parejas
         if (oferta === 1) {
-            if (adulto === 2) {
-                localStorage.setItem('adultoMon', (adultoMon * 0.9))
+            if (adulto == 2 && boletos==2) {
+                localStorage.setItem('total', (total * 0.9))
                 alert("Oferta aplicada")
                 ofertaAplicado = true;
             }
@@ -43,11 +38,13 @@ function oferta(oferta) {
         }
         //el de familia
         else if (oferta === 2) {
-            if (adulto === 2 && nino === 2) {
-                localStorage.setItem('adultoMon', (adultoMon * 0.9))
-                localStorage.setItem('ninoMon', (ninoMon * 0.9))
+            if (adulto ===2 && nino == 2 && boletos == 4) {
+                localStorage.setItem('total', (total * 0.9))
                 alert("Oferta aplicada")
                 ofertaAplicado = true;
+            }
+            else{
+                alert("Oferta invalida")
             }
         }
         // el de transformer
@@ -55,6 +52,7 @@ function oferta(oferta) {
             if (boletos >= 2) {
                 if (pelicula === 226) {
                     total *= 0.75
+                    localStorage.setItem('total', total)
                     alert("Oferta aplicada")
                     ofertaAplicado = true;
                 }
@@ -70,6 +68,7 @@ function oferta(oferta) {
         else if (oferta === 4) {
             if (boletos >= 3) {
                 total *= 0.85
+                localStorage.setItem('total', total)
                 alert("Oferta aplicada")
                 ofertaAplicado = true;
             }
@@ -79,9 +78,10 @@ function oferta(oferta) {
         }
         //4 boletos, 1 gratis si es a jujutsu
         else if (oferta === 5) {
-            if (boletos === 4) {
+            if (boletos == 4) {
                 if (pelicula === 286) {
                     total -= 3
+                    localStorage.setItem('total', total)
                     alert("Oferta aplicada")
                     ofertaAplicado = true;
                 }
@@ -95,9 +95,10 @@ function oferta(oferta) {
         }
         //2 boletos si es de terror
         else if(oferta ===6){
-            if(boletos === 2){
+            if(boletos == 2){
                 if(genero.includes('Terror')){
                     total-=1.5
+                    localStorage.setItem('total', total)
                     ofertaAplicado = true
                     alert("Oferta aplicada")
                 }
@@ -109,7 +110,7 @@ function oferta(oferta) {
                 alert("Oferta invalida")
             }
         }
-        sumar()
+        document.getElementById("codigoOferta").placeholder = generarCodigoAleatorio();
     }
     else {
         alert("Ya ha aplicado una oferta")
