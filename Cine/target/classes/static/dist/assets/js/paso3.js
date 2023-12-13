@@ -115,3 +115,70 @@ function oferta(oferta) {
         alert("Ya ha aplicado una oferta")
     }
 }
+
+
+let paso3;
+// Agrega un listener para el evento 'input' en cada campo
+document.getElementById('nombre').addEventListener('input', verificarCampos);
+document.getElementById('apellido').addEventListener('input', verificarCampos);
+
+document.getElementById('correo').addEventListener('input', verificarCampos);
+document.getElementById('numTarjeta').addEventListener('input', verificarCampos);
+document.getElementById('exp').addEventListener('input', verificarCampos);
+document.getElementById('cw').addEventListener('input', verificarCampos);
+
+function verificarCampos() {
+  // Obtener los valores de los campos
+  var valorCampo1 = document.getElementById('nombre').value;
+  var valorCampo2 = document.getElementById('apellido').value;
+ 
+  var valorCampo4 = document.getElementById('correo').value;
+  var valorCampo5 = document.getElementById('numTarjeta').value;
+  var valorCampo6 = document.getElementById('exp').value;
+  var valorCampo7 = document.getElementById('cw').value;
+
+  // Obtener el botón
+  var miBoton = document.getElementById('button-next');
+  var mensajeError = document.getElementById('mensajeError');
+  // Verificar si todos los campos están llenos
+  if (valorCampo1 !== '' && valorCampo2 !== '' && valorCampo4 !== '' &&
+  valorCampo5 !== '' && valorCampo6 !== '' && valorCampo7 !== '' ) {
+    // Habilitar el botón si todos los campos están llenos
+    miBoton.disabled = false;
+
+  } else {
+    // Deshabilitar el botón si algún campo está vacío
+    miBoton.disabled = true;
+
+  }
+
+}
+
+// dropdown
+function toggleDropdown() {
+    var dropdown = document.getElementById("dropdown");
+    dropdown.classList.toggle("invisible");
+}
+
+function cancelarDropdown() {
+    var dropdown = document.getElementById("dropdown");
+    dropdown.classList.add("invisible");
+}
+
+function aceptarDropdown() {
+    // Genera un código aleatorio y lo muestra en el campo de contraseña
+    var passwordInput = document.getElementById("passwordInput");
+    var codigoAleatorio = generarCodigoAleatorio();
+    passwordInput.value = codigoAleatorio;
+
+    // Oculta el dropdown
+    var dropdown = document.getElementById("dropdown");
+    dropdown.classList.add("invisible");
+}
+
+function generarCodigoAleatorio() {
+    // Genera un número aleatorio de 1000 a 9999
+    var codigo = Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;
+    return codigo.toString(); // Convierte el número a cadena
+}
+

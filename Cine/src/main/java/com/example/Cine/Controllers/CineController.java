@@ -32,9 +32,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class CineController {
 
     private final ObjectMapper objectMapper = new ObjectMapper();
-    private final CineDb cineDb = new CineDb(); // Instantiate CineDb
+    private  CineDb cineDb = new CineDb(); 
+    public CineController(CineDb cineDb) {
+        this.cineDb = cineDb;
+    }
 
     // Inicio de sesion
+    
     @PostMapping("/Cine/login")
     public ResponseEntity<String> login(@RequestBody Usuarios usuario) {
         try {
@@ -54,15 +58,85 @@ public class CineController {
         }
     }
 
+    
+    @PostMapping("/Cine/enviarCorreoCompra")
+public ResponseEntity<String> enviarCorreoCompra(@RequestBody Map<String, Object> data) {
+    try {
+        String correoUsuario = (String) data.get("correoUsuario");
+        // Obtén la información de la compra
+        PasoQr compra = objectMapper.convertValue(data.get("compra"), PasoQr.class);
+        
+        // Llama a la función existente que envía correos HTML
+        cineDb.enviarCorreoHtml(correoUsuario, "Detalles de la compra", generarContenidoHTMLCompra(compra));
+        
+        return ResponseEntity.ok("Correo enviado exitosamente");
+    } catch (Exception e) {
+        e.printStackTrace();
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al enviar el correo");
+    }
+}
+
+private String generarContenidoHTMLCompra(PasoQr compra) {
+    return "<html><head>"
+            + "<style>"
+            + "body { background: linear-gradient(to bottom, #9C6D46, #684A31); color: white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 18px; } "
+            + "img { max-width: 100%; height: auto; display: block; margin: 20px auto; }"
+            + ".container { max-width: 600px; margin: 0 auto; }"
+            + "h2, p { text-align: center; font-size: 24px; }"
+            + "</style>"
+            + "<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css\">"
+            + "</head><body style=\"background: linear-gradient(to bottom, #9C6D46, #684A31); color: white;\">"
+            + "<div class=\"container\">"
+            + "<h2 class=\"mt-5 text-white\">Detalles de tu compra en Filmania</h2>"
+            + "<p class=\"bg-dark p-3 text-white\">Sede: <strong>" + compra.getSede() + "</strong></p>"
+            + "<p class=\"bg-dark p-3 text-white\">Película: <strong>" + compra.getPelicula() + "</strong></p>"
+            + "<p class=\"bg-dark p-3 text-white\">Sala: <strong>" + compra.getSala() + "</strong></p>"
+            + "<p class=\"bg-dark p-3 text-white\">Fecha: <strong>" + compra.getFecha() + "</strong></p>"
+            + "<p class=\"bg-dark p-3 text-white\">Hora: <strong>" + compra.getHora() + "</strong></p>"
+            + "<p class=\"bg-dark p-3 text-white\">Boletos: <strong>" + compra.getBoletos() + "</strong></p>"
+            + "<img src=\"https://i.postimg.cc/qqcJKxF4/zyro-image-2.png\" class=\"img-fluid\" alt=\"\">"
+            + "</div>"
+            + "</body></html>";
+}
+
+
+
     // Registro
     @PostMapping("/Cine/registro")
     public ResponseEntity<String> registrarUsuario(@RequestBody Usuarios usuario) {
         try {
             String resultado = cineDb.registro(usuario);
+
+            // Si el registro es exitoso, envía el correo de confirmación
+            if ("Registro exitoso".equals(resultado)) {
+                enviarCorreoConfirmacion(usuario.getCorreo(), usuario.getNombre(), usuario.getApellido());  
+            }
+
             return ResponseEntity.ok(resultado);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al registrar usuario");
         }
+    }
+    // Método para enviar correo de confirmación
+    private void enviarCorreoConfirmacion(String correoUsuario, String nombre, String apellido) {
+        String subject = "Registro exitoso";
+        String body = "<html><head>"
+        + "<style>body { background: linear-gradient(to bottom, #9C6D46, #684A31); color: white; font-family: Arial, sans-serif; } "
+        + "img { max-width: 100%; height: auto; display: block; background-color: black; } "
+        + ".container { max-width: 600px; margin: 0 auto; } "
+        + "h2 { text-align: center; font-size: 24px; } "
+        + "p { text-align: center; font-size: 18px; padding: 10px; background-color: #333; } "
+        + "</style>"
+        + "<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css\">"
+        + "</head><body style=\"background: linear-gradient(to bottom, #9C6D46, #684A31); color: white;\">"
+        + "<div class=\"container\">"
+        + "<h2 class=\"mt-5 text-white\">¡Bienvenido a tu cuenta en Filmania!</h2>"
+        + "<p><strong>Gracias por Registrarte, " + nombre + " " + apellido + ".</strong></p>"
+        + "</div>"
+        + "<img src=\"https://i.postimg.cc/qqcJKxF4/zyro-image-2.png\" class=\"img-fluid\" alt=\"\">"
+        + "</body></html>";
+    
+        cineDb.enviarCorreoHtml(correoUsuario, subject, body);
     }
 
     // Obtener información de registro

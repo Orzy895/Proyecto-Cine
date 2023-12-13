@@ -9,6 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.stereotype.Service;
+
 import com.example.Cine.modelos.Actor;
 import com.example.Cine.modelos.Asientos;
 import com.example.Cine.modelos.Boletos;
@@ -25,6 +30,11 @@ import com.example.Cine.modelos.Ingresos2;
 import com.example.Cine.modelos.Ingresos3;
 import com.example.Cine.modelos.Oferta;
 
+import jakarta.mail.MessagingException;
+import jakarta.mail.internet.MimeMessage;
+
+
+@Service
 public class CineDb {
     Connection cn;
 
@@ -1281,4 +1291,26 @@ public class CineDb {
         }
         return ofertas;
     }
+
+       @Autowired
+    private JavaMailSender javaMailSender;
+
+    public void enviarCorreoHtml(String to, String subject, String htmlBody) {
+        MimeMessage mensaje = javaMailSender.createMimeMessage();
+
+        try {
+            MimeMessageHelper helper = new MimeMessageHelper(mensaje, true, "UTF-8");
+
+            helper.setTo(to);
+            helper.setSubject(subject);
+            helper.setText(htmlBody, true);
+
+            javaMailSender.send(mensaje);
+            System.out.println("Correo enviado exitosamente.");
+        }catch (MessagingException e) {
+            e.printStackTrace();  // Imprime la excepción en la consola
+            throw new RuntimeException(e);
+        }
+
+}
 }

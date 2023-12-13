@@ -588,6 +588,10 @@ video {
   pointer-events: auto;
 }
 
+.invisible {
+  visibility: hidden;
+}
+
 .fixed {
   position: fixed;
 }
@@ -1270,8 +1274,8 @@ video {
   height: 1550px;
 }
 
-.h-\[1600px\] {
-  height: 1600px;
+.h-\[1630px\] {
+  height: 1630px;
 }
 
 .h-\[180px\] {
@@ -1356,14 +1360,6 @@ video {
 
 .h-screen {
   height: 100vh;
-}
-
-.h-\[1620px\] {
-  height: 1620px;
-}
-
-.h-\[1630px\] {
-  height: 1630px;
 }
 
 .max-h-\[18rem\] {
@@ -2134,6 +2130,11 @@ video {
 .bg-\[\#573C2C\] {
   --tw-bg-opacity: 1;
   background-color: rgb(87 60 44 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#63432E\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(99 67 46 / var(--tw-bg-opacity));
 }
 
 .bg-\[\#63432E\]\/50 {

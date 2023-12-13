@@ -1,4 +1,4 @@
-const urlbase = "http://127.0.0.1:8080";
+const urlbase="http://127.0.0.1:8080";
 let rutaOriginalImagenPerfil;
 document.addEventListener('DOMContentLoaded', function () {
     const usuarioDataString = sessionStorage.getItem('usuarioData');
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
     cerrarSesionBtn.addEventListener('click', function () {
         sessionStorage.removeItem('usuarioData');
 
-
+        
         localStorage.setItem('rutaImagenPerfil', rutaOriginalImagenPerfil);
         fotoPerfil.src = rutaOriginalImagenPerfil;
         perfilUsuario.src = rutaOriginalImagenPerfil;
@@ -119,69 +119,64 @@ function obtenerDatosDelUsuario() {
 }
 async function actualizar() {
     // Obtener datos del usuario desde sessionStorage
-    if (cambiado === false) {
-        alert('No hay nada para actualizar')
+    const usuarioData = obtenerDatosDelUsuario();
+
+    if (!usuarioData) {
+        // Aquí puedes manejar el caso en el que no se encuentren datos del usuario
+        console.error('Error: Datos del usuario no encontrados.');
+        return;
     }
-    else {
-        const usuarioData = obtenerDatosDelUsuario();
 
-        if (!usuarioData) {
-            // Aquí puedes manejar el caso en el que no se encuentren datos del usuario
-            console.error('Error: Datos del usuario no encontrados.');
-            return;
-        }
+    const usuarioId = usuarioData.id_usuario;
+    const dataActualizada = { ...usuarioData };
 
-        const usuarioId = usuarioData.id_usuario;
-        const dataActualizada = { ...usuarioData };
+    // Actualizar todos los campos con los valores actuales del formulario
+    dataActualizada.nombre = document.getElementById('nombreDatos').value;
+    dataActualizada.apellido = document.getElementById('apellidoDatos').value;
+    dataActualizada.fechaNacimiento = document.getElementById('fechaNacimiento').value;
+    dataActualizada.email = document.getElementById('email').value;
+    dataActualizada.telefono = document.getElementById('telefono').value;
 
-        // Actualizar todos los campos con los valores actuales del formulario
-        dataActualizada.nombre = document.getElementById('nombreDatos').value;
-        dataActualizada.apellido = document.getElementById('apellidoDatos').value;
-        dataActualizada.fechaNacimiento = document.getElementById('fechaNacimiento').value;
-        dataActualizada.email = document.getElementById('email').value;
-        dataActualizada.telefono = document.getElementById('telefono').value;
+    // Verificar si algún campo ha cambiado
+    const camposCambiados = Object.keys(dataActualizada).filter(campo => dataActualizada[campo] !== usuarioData[campo]);
 
-        // Verificar si algún campo ha cambiado
-        const camposCambiados = Object.keys(dataActualizada).filter(campo => dataActualizada[campo] !== usuarioData[campo]);
+    if (camposCambiados.length === 0) {
+        alert('No se han realizado cambios.');
+        return;
+    }
 
-        if (camposCambiados.length === 0) {
-            alert('No se han realizado cambios.');
-            return;
-        }
+    try {
+        const response = await fetch(`${urlbase}/Cine/actualizarUsuario`, {
+            method: 'PATCH', 
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(dataActualizada),
+        });
 
-        try {
-            const response = await fetch(`${urlbase}/Cine/actualizarUsuario`, {
-                method: 'PATCH',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(dataActualizada),
-            });
+        
+        if (response.ok) {
+            
+            sessionStorage.setItem('usuarioData', JSON.stringify(dataActualizada));
 
+            alert('Datos del usuario actualizados correctamente.');
 
-            if (response.ok) {
-
-                sessionStorage.setItem('usuarioData', JSON.stringify(dataActualizada));
-
-                alert('Datos del usuario actualizados correctamente.');
-
-                // Recargar la página después de una actualización exitosa
-                window.location.reload();
-            } else {
-                // Manejar errores
-                try {
-                    const jsonResponse = await response.json();
-                    console.error('Error al actualizar los datos del usuario:', jsonResponse.error);
-                    alert('Error al actualizar los datos del usuario. Por favor, inténtelo de nuevo.');
-                } catch (error) {
-                    console.error('Error al actualizar los datos del usuario:', await response.text());
-                    alert('Error al actualizar los datos del usuario. Por favor, inténtelo de nuevo.');
-                }
+            // Recargar la página después de una actualización exitosa
+            window.location.reload();
+        } else {
+            // Manejar errores
+            try {
+                const jsonResponse = await response.json();
+                console.error('Error al actualizar los datos del usuario:', jsonResponse.error);
+                alert('Error al actualizar los datos del usuario. Por favor, inténtelo de nuevo.');
+            } catch (error) {
+                console.error('Error al actualizar los datos del usuario:', await response.text());
+                alert('Error al actualizar los datos del usuario. Por favor, inténtelo de nuevo.');
             }
-        } catch (error) {
-            console.error('Error de red:', error);
-            alert('Error de red. Por favor, inténtelo de nuevo.');
         }
+    } catch (error) {
+        console.error('Error de red:', error);
+        alert('Error de red. Por favor, inténtelo de nuevo.');
     }
 }
 
@@ -199,16 +194,16 @@ function obtenerUsuarioId() {
 function cambiarFotoPerfil(imagenSeleccionada) {
     const nuevaRutaImagen = imagenSeleccionada.src;
 
-
+    
     const fotoPerfil = document.getElementById('fotoperfil');
     if (fotoPerfil) {
         fotoPerfil.src = nuevaRutaImagen;
     }
 
-
+    
     localStorage.setItem('rutaImagenPerfil', nuevaRutaImagen);
 
-
+   
     const perfilUsuario = document.getElementById('perfilUsuario');
     if (perfilUsuario) {
         perfilUsuario.src = nuevaRutaImagen;
@@ -216,10 +211,10 @@ function cambiarFotoPerfil(imagenSeleccionada) {
 }
 document.addEventListener('DOMContentLoaded', function () {
     const rutaImagenPerfil = localStorage.getItem('rutaImagenPerfil');
-
+    
     const perfilUsuario = document.getElementById('perfilUsuario');
     if (perfilUsuario && rutaImagenPerfil) {
         perfilUsuario.src = rutaImagenPerfil;
     }
 });
-
+}

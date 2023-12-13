@@ -94,5 +94,8 @@ public class Usuarios {
     this.fechaNacimiento = fechaNacimiento;
     this.peliculas_Vistas = peliculas_Vistas;
 }
-    
+
+	public String getCorreo() {
+		return email; 
+	} 
 }

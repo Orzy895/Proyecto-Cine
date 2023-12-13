@@ -185,75 +185,113 @@
     
     <script>
 
-        //PONER URL BASE DEL PROYECTO
+        // PONER URL BASE DEL PROYECTO
         let baseUrl = "http://localhost:8080";
-
-        //DEBE APUNTAR al qr_target.html que estará en el SERVER "https://www.ejem.com/qr_target.html" 
-        let targetUrl = "http://localhost:8080/dist/qr_target.html";
-
+    
+        // DEBE APUNTAR al qr_target.html que estará en el SERVER "https://www.ejem.com/qr_target.html" 
+        let targetUrl = "./qr_target.html";
+    
         let pruebas;
+    
         function ObtenerCompra(codigoConfirmacion) {
-
-            //recurso en backend
-            fetch(baseUrl + '/Cine/datosQr/' + codigoConfirmacion, { method: "Get" }).then(res => {
-                res.json()
-                    .then(compra => {
-                        pruebas = compra;
-                        ImprimirCompra(pruebas);
-
-                    });
-            });
+            // recurso en backend
+            fetch(baseUrl + '/Cine/datosQr/' + codigoConfirmacion, { method: "GET" })
+                .then(res => res.json())
+                .then(compra => {
+                    pruebas = compra;
+                    ImprimirCompra(pruebas);
+    
+                    // Enviar correo después de imprimir la compra
+                    enviarCorreoUsuario();
+                })
+                .catch(error => {
+                    console.error('Error al obtener la compra:', error);
+                });
         }
-
+    
         function ImprimirCompra(compra) {
-
-            //Mapping
+            // Mapping
             let confirmacion = document.getElementById("compra-confirmacion");
             let total = document.getElementById("compra-total");
-
             let sede = document.getElementById("compra-sede");
             let pelicula = document.getElementById("compra-pelicula");
             let sala = document.getElementById("compra-sala");
             let fecha = document.getElementById("compra-fecha");
             let hora = document.getElementById("compra-hora");
             let boletos = document.getElementById("compra-boletos");
-
+    
             confirmacion.innerHTML = codigoConfirmacion;
             total.innerHTML = compraTotal + ".00";
-
             sede.innerHTML = compra.sede;
             pelicula.innerHTML = compra.pelicula;
             sala.innerHTML = compra.sala;
             boletos.innerHTML = compra.boletos;
             fecha.innerHTML = compra.fecha;
             hora.innerHTML = compra.hora;
+    
             // Formatear hora segun las preferencias del usuario (HH:mm)
-            //let hour = new Date("2023-01-01 " + compra.hora);
-            //hora.innerHTML = hour.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' });
-
-
+            // let hour = new Date("2023-01-01 " + compra.hora);
+            // hora.innerHTML = hour.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' });
+    
             // Generar QR code
             let qrcode = new QRCode(document.getElementById('compra-qrcode'), {
                 text: paginaVideo,
                 width: 300,
                 height: 300
             });
-
-            //qr clickeable
-            //let qrlink = document.getElementById("paginaVideo");
-            //qrlink.href = paginaVideo;
-
+    
+            // qr clickeable
+            // let qrlink = document.getElementById("paginaVideo");
+            // qrlink.href = paginaVideo;
+    
             let qrpic = document.getElementById('compra-qrcode');
             qrpic.classList.add('border-[10px]', 'border-white');
         }
-
-        //Calculo del total de compra
-        let compraTotal = localStorage.getItem("total")
-        let codigoConfirmacion = sessionStorage.codigoConfirmacion
+    
+        // Calculo del total de compra
+        let compraTotal = ((Number(sessionStorage.adultoCantidad) +
+            Number(sessionStorage.ninoCantidad)) * 3)
+            + ((Number(sessionStorage.jubiladoCantidad) +
+                Number(sessionStorage.discapacitadoCantidad)) * 2);
+    
+        let codigoConfirmacion = sessionStorage.codigoConfirmacion;
         let paginaVideo = targetUrl + "?cod=" + codigoConfirmacion;
-
+    
         ObtenerCompra(codigoConfirmacion);
-
+    
+        function enviarCorreoUsuario() {
+            const usuarioDataString = sessionStorage.getItem('usuarioData');
+            const usuarioData = JSON.parse(usuarioDataString);
+            console.log(usuarioDataString);
+    
+            if (usuarioData) {
+                const correoUsuario = usuarioData.email;
+                const compra = pruebas;
+    
+                fetch(baseUrl + '/Cine/enviarCorreoCompra', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        correoUsuario: correoUsuario,
+                        compra: compra,
+                    }),
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            console.log('Correo enviado exitosamente');
+                        } else {
+                            console.error('Error al enviar el correo:', response.statusText);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error de red:', error);
+                    });
+            } else {
+                console.error('Datos del usuario no encontrados.');
+            }
+        }
     </script>
-</body>
+    </body>
 </html>
