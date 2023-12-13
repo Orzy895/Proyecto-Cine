@@ -140,16 +140,20 @@ function guardarPeliSeleccionada(peliSeleccionada, hora) {
     let anteriorCartelera;
     cartelera.forEach(pelicula => {
         if (pelicula.id_cartelera === peliSeleccionada && anteriorCartelera !== peliSeleccionada) {
-            //Guarda los datos de la peli seleccionada en sessionstorage para usarlo en otra pagina
+            // Guarda los datos de la peli seleccionada en sessionStorage para usarlo en otra pagina
             sessionStorage.sede = pelicula.cine;
             sessionStorage.pelicula = pelicula.titulo;
             sessionStorage.fecha = document.getElementById('fecha').value;
             sessionStorage.hora = hora;
             sessionStorage.nombreSala = pelicula.sala;
+
+            
+            sessionStorage.fotoPoster = pelicula.fotoPoster;
+            sessionStorage.linkQR = targetUrl + "?cod=" + sessionStorage.codigoConfirmacion;
         }
         anteriorCartelera = pelicula.id_cartelera;
     });
-    window.location.href = "./boletos-Paso-1.html";//Dirige al paso 1 de compra
+    window.location.href = "./boletos-Paso-1.html"; // Dirige al paso 1 de compra
 }
 
 
@@ -225,6 +229,7 @@ function actualizarCartelera() {
     } else {
         filtrarPorGenero();
     }
+
 
 }
 function filtrarSucursal(idSucursal) {

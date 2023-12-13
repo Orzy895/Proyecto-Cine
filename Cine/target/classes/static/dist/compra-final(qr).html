@@ -207,7 +207,8 @@
                 .then(compra => {
                     pruebas = compra;
                     ImprimirCompra(pruebas);
-
+                    sessionStorage.setItem('compraFotoPoster', compra.fotoPoster);
+                    sessionStorage.setItem('compraLinkQr', compra.linkQr);
                     // Enviar correo después de imprimir la compra
                     enviarCorreoUsuario();
                 })
@@ -235,7 +236,12 @@
             boletos.innerHTML = compra.boletos;
             fecha.innerHTML = compra.fecha;
             hora.innerHTML = compra.hora;
-
+            const viewedMovies = JSON.parse(sessionStorage.getItem('viewedMovies')) || [];
+            viewedMovies.push({
+                title: compra.pelicula,
+                linkQr: compra.linkQr
+            });
+            sessionStorage.setItem('viewedMovies', JSON.stringify(viewedMovies));    
             // Formatear hora segun las preferencias del usuario (HH:mm)
             // let hour = new Date("2023-01-01 " + compra.hora);
             // hora.innerHTML = hour.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' });

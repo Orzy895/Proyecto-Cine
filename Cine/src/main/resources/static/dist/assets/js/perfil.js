@@ -2,7 +2,6 @@ const urlbase="http://127.0.0.1:8080";
 let rutaOriginalImagenPerfil;
 document.addEventListener('DOMContentLoaded', function () {
     const usuarioDataString = sessionStorage.getItem('usuarioData');
-
     if (usuarioDataString) {
         const usuarioData = JSON.parse(usuarioDataString);
         document.getElementById('nombreDatos').innerText = usuarioData.nombre;
@@ -216,4 +215,53 @@ document.addEventListener('DOMContentLoaded', function () {
     if (perfilUsuario && rutaImagenPerfil) {
         perfilUsuario.src = rutaImagenPerfil;
     }
+});document.addEventListener('DOMContentLoaded', function () {
+    // Obtener las películas vistas desde el sessionStorage
+    const viewedMoviesString = sessionStorage.getItem('viewedMovies');
+    const viewedMovies = JSON.parse(viewedMoviesString) || [];
+
+    // Seleccionar el contenedor donde se mostrarán las películas
+    const moviesContainer = document.getElementById('movies-container');
+
+    // Verificar si hay películas vistas
+    if (viewedMovies.length > 0) {
+        // Mapear las películas vistas en la sección
+        viewedMovies.forEach(movie => {
+            const movieContainer = document.createElement('div');
+            movieContainer.classList.add('flex', 'items-center', 'justify-center', 'mb-2', 'gap-2', 'md:gap-4');
+
+            const iframeContainer = document.createElement('div');
+            iframeContainer.classList.add('relative');
+
+            // Utilizar un iframe para el video de YouTube
+            const iframe = document.createElement('iframe');
+            iframe.width = '210';
+            iframe.height = '150';
+            iframe.src = movie.linkQr;
+            iframe.frameBorder = '0';
+            iframe.allowFullscreen = true;
+
+            const movieTitle = document.createElement('p');
+            movieTitle.classList.add('text-white', 'absolute', 'right-0', 'left-0', 'text-center', 'text-xs', 'font-bold', 'mt-1', 'md:text-sm', 'lg:text-base');
+            movieTitle.textContent = movie.title;
+
+            iframeContainer.appendChild(iframe);
+            iframeContainer.appendChild(movieTitle);
+            movieContainer.appendChild(iframeContainer);
+            moviesContainer.appendChild(movieContainer);
+        });
+    } else {
+        // Mostrar un mensaje si no hay películas vistas
+        const noMoviesMessage = document.createElement('p');
+        noMoviesMessage.classList.add('text-white', 'text-center');
+        noMoviesMessage.textContent = 'No has visto ninguna película.';
+        moviesContainer.appendChild(noMoviesMessage);
+    }
+
+    // Botón para ver más (puedes ajustar según tu lógica)
+    const verMasButton = document.getElementById('ver-mas-button');
+    verMasButton.addEventListener('click', function () {
+        // Tu lógica para ver más películas
+        console.log('Ver más películas...');
+    });
 });

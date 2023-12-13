@@ -173,56 +173,28 @@
             <!--SECCION DE LA DERECHA(PELICULAS)-->
             <section id="Peliculas">
                 <div class="bg-gray-300 bg-opacity-40 rounded-3xl flex flex-col gap-y-6 py-7 px-7">
-                    <h1 class="text-white font-bold text-2xl text-center md:text-3xl">Peliculas Vistas</h1>
-                    <div class="flex items-center justify-center mb-2 gap-2 md:gap-4">
-                        <div class="relative">
-                            <img src="./assets/img/img-home/carrusel1.png" alt=""
-                                class="w-[100px] h-[100px] sm:w-[120px] sm:h-[80px] md:w-[210px] md:h-[150px] object-cover">
-                            <p
-                                class="text-white absolute right-0 left-0 text-center text-xs font-bold   mt-1 md:text-sm lg:text-base">
-                                CARS</p>
-                        </div>
-                        <div class="relative ">
-                            <img src="./assets/img/img-home/carrusel1.png" alt=""
-                                class="w-[100px] h-[100px] sm:w-[120px] sm:h-[80px] md:w-[210px] md:h-[150px] object-cover">
-                            <p
-                                class="text-white absolute right-0 left-0 text-center text-xs font-bold   mt-1 md:text-sm lg:text-base">
-                                INCEPTION
-                            </p>
-                        </div>
-                        <div class="relative ">
-                            <img src="./assets/img/img-home/carrusel1.png" alt=""
-                                class="w-[100px] h-[100px] sm:w-[120px] sm:h-[80px] md:w-[210px] md:h-[150px] object-cover">
-                            <p
-                                class="text-white absolute right-0 left-0 text-center text-xs font-bold   mt-1 md:text-sm lg:text-base">
-                                OPPENHEIMER
-                            </p>
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-center gap-2 md:gap-4">
-                        <div class="relative ">
-                            <img src="./assets/img/img-home/carrusel2.jpg" alt=""
-                                class="w-[100px] h-[100px] sm:w-[120px] sm:h-[80px] md:w-[210px] md:h-[150px] object-cover">
-                            <p
-                                class="text-white absolute right-0 left-0 text-center text-xs font-bold   mt-1 md:text-sm lg:text-base">
-                                AKIRA</p>
-                        </div>
-                        <div class="relative ">
-                            <img src="./assets/img/img-home/carrusel2.jpg" alt=""
-                                class="w-[100px] h-[100px] sm:w-[120px] sm:h-[80px] md:w-[210px] md:h-[150px] object-cover">
-                            <p
-                                class="text-white absolute right-0 left-0  text-center text-xs font-bold  mt-1 md:text-sm lg:text-base">
-                                PRINCESS MONONOKE</p>
-                        </div>
-                        <div class="relative ">
-                            <img src="./assets/img/img-home/carrusel2.jpg" alt=""
-                                class="w-[100px] h-[100px] sm:w-[120px] sm:h-[80px] md:w-[210px] md:h-[150px] object-cover">
-                            <p
-                                class="text-white absolute right-0 left-0 text-center text-xs font-bold   mt-1 md:text-sm lg:text-base">
-                                STAR WARS ROGUE ONE</p>
-                        </div>
-                    </div>
-                    <button class="font-medium text-xl mt-10 md:text-2xl    ">VER MÁS</button>
+                    <h1 class="text-white font-bold text-2xl text-center md:text-3xl">Películas Vistas</h1>
+            
+                    <!-- Check if there are viewed movies -->
+                    
+                        <!-- Use a loop to display each viewed movie -->
+                        <!-- Example Loop -->
+                        
+                            <div class="flex items-center justify-center mb-2 gap-2 md:gap-4">
+                                <div class="relative">
+                                    <!-- Use iframe for YouTube video -->
+                                    <iframe width="210" height="150" src="{{this.linkQr}}" frameborder="0" allowfullscreen></iframe>
+                                    <p class="text-white absolute right-0 left-0 text-center text-xs font-bold mt-1 md:text-sm lg:text-base">
+                                        
+                                    </p>
+                                </div>
+                            </div>
+                        
+                    
+                        <!-- Display a message when there are no viewed movies -->
+                        <p class="text-white text-center">No has visto ninguna película.</p>
+                    
+                    <button class="font-medium text-xl mt-10 md:text-2xl">VER MÁS</button>
                 </div>
             </section>
             <section style="display: none;" id="reporte">
