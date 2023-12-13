@@ -36,7 +36,8 @@
         <div class="flex max-sm:hidden">
           <div class="cursor-pointer">
             <p id="usernamePlaceholder"
-              class="text-lg font-semibold text-ellipsis whitespace-nowrap overflow-hidden max-w-[110px] mr-3">Username</p>
+              class="text-lg font-semibold text-ellipsis whitespace-nowrap overflow-hidden max-w-[110px] mr-3">Username
+            </p>
           </div>
           <div onclick="userLogged()" class="absolute right-0 bottom-3 cursor-pointer ">
             <svg class="w-5 h-5 ml-2 -mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -117,20 +118,59 @@
           </div>
           <div class="mb-3">
             <h5 class="text-lg font-semibold mb-2 text-white text-left">Nombre</h5>
-            <input type="text" required class="w-full px-3 py-2 border-b border-white bg-[#63432E]/50" placeholder="">
+            <input id="nombre" type="text" required class="w-full px-3 py-2 border-b border-white bg-[#63432E]/50" placeholder="">
           </div>
           <div class="mb-3">
             <h5 class="text-lg font-semibold mb-2 text-white text-left">Apellido</h5>
-            <input type="text" required class="w-full px-3 py-2 border-b border-white bg-[#63432E]/50" placeholder="">
+            <input id="apellido" type="text" required class="w-full px-3 py-2 border-b border-white bg-[#63432E]/50" placeholder="">
           </div>
-          <div class="mb-3">
-            <h5 class="text-lg font-semibold mb-2 text-white text-left">Tarjeta Club Filmania</h5>
-            <input type="password" required class="w-full px-3 py-2 border-b border-white bg-[#63432E]/50"
-              placeholder="">
+          <div class="mb-3 relative">
+            <h5 class="text-lg font-semibold mb-2 text-white text-left inline-block">Ofertas Disponibles</h5>
+            <button id="openDropdownBtn" onclick="toggleDropdown()"
+              class="ml-2 px-2 py-1 text-white bg-Mulled-Cider rounded-md">Mostrar</button>
+
+            <!-- Dropdown -->
+            <div id="dropdown"
+              class="invisible absolute left-0 mt-2 bg-white border border-gray-300  rounded-md p-4 z-10">
+              <!-- Contenido del dropdown con checkboxes y texto -->
+              <label class="flex items-center mb-2 text-black ">
+                <input type="checkbox" class="mr-2"> 10% de Descuento por la compra de 2 boletos para adultos y 2 para
+                niños(General)
+              </label>
+              <label class="flex items-center mb-2 text-black">
+                <input type="checkbox" class="mr-2"> 15% de Descuento por la compra de 2 boletos de adultos (General)
+              </label>
+              <label class="flex items-center mb-2 text-black">
+                <input type="checkbox" class="mr-2"> 15% de Descuento por la compra de 3 boletos(black Clover)
+              </label>
+              <label class="flex items-center mb-2 text-black">
+                <input type="checkbox" class="mr-2"> 50% de Descuento por la compra de 1 boletos y el segundo es a mitad
+                de precio(FNF)
+              </label>
+              <label class="flex items-center mb-2 text-black">
+                <input type="checkbox" class="mr-2"> a compra de 1 boletos y lleva a un amigo gratis (General)
+              </label>
+              <label class="flex items-center mb-2 text-black">
+                <input type="checkbox" class="mr-2"> 25% de Descuento por la compra de 1 boletos (Transformers)
+              </label>
+
+              <!-- Botones Aceptar y Cancelar -->
+              <div class="flex justify-between mt-4">
+                <button onclick="cancelarDropdown()"
+                  class="px-4 py-2 border-white bg-[#63432E] rounded-md">Cancelar</button>
+                <button onclick="aceptarDropdown()"
+                  class="px-4 py-2 border-white bg-[#63432E] rounded-md">Aceptar</button>
+              </div>
+            </div>
           </div>
+
+          <!-- Código en el password -->
+          <input id="passwordInput" type="text" required class="w-full px-3 py-2 border-b border-white bg-[#63432E]/50"
+            placeholder="Código">
+
           <div class="mb-3">
             <h5 class="text-lg font-semibold mb-2 text-white text-left">Correo Electrónico</h5>
-            <input type="email" required class="w-full px-3 py-2 border-b border-white bg-[#63432E]/50" placeholder="">
+            <input id="correo" type="email" required class="w-full px-3 py-2 border-b border-white bg-[#63432E]/50" placeholder="">
           </div>
         </div>
         <!-- Datos de la Tarjeta -->
@@ -141,20 +181,19 @@
 
           <div class="mb-3">
             <h5 class="text-lg font-semibold mb-2 text-white text-left">Número de la tarjeta</h5>
-            <input type="text" required class="w-full px-3 py-2 border-b border-white bg-[#63432E]/50"
-              placeholder="">
+            <input id="numTarjeta" type="text" required class="w-full px-3 py-2 border-b border-white bg-[#63432E]/50" placeholder="">
           </div>
           <div class="mb-3">
             <h5 class="text-lg font-semibold mb-2 text-white text-left">Fecha Expiración </h5>
             <div class="flex mb-3">
               <!-- Columna Izquierda -->
               <div class="w-1/2 pr-2">
-                <input type="month" required class="w-full px-3 py-2 border-b border-white bg-[#63432E]/50"
+                <input id="exp" type="month" required class="w-full px-3 py-2 border-b border-white bg-[#63432E]/50"
                   aria-label="FECHA" placeholder="MM/YY">
               </div>
               <!-- Columna Derecha -->
               <div class="w-1/2 pl-2 relative">
-                <input type="text" required class="w-full px-3 py-2 border-b border-white bg-[#63432E]/50"
+                <input id="cw" type="text" required class="w-full px-3 py-2 border-b border-white bg-[#63432E]/50"
                   aria-label="CW" placeholder="">
                 <p class="absolute bottom-[34px] text-semibold transform -translate-y-1/2 left-2 text-xl text-white ">CW
                 </p>
@@ -195,7 +234,7 @@
     <!-- Botón Siguiente // SUBMIT-->
     <!--PARA LOS DE BACKEND, NECESITO QUE ESTO SE VAYA A ./compra-final(qr).html usen el window.location.href='./compra-final(qr).html'-->
     <input onclick="window.location.href='./compra-final(qr).html'" type="submit" id="button-next" value="Siguiente"
-      class="w-32 h-12 px-8 py-2 relative rounded-2xl bg-Mulled-Cider cursor-pointer"></input>
+      disabled class="w-32 h-12 px-8 py-2 relative rounded-2xl bg-Mulled-Cider cursor-pointer"></input>
   </section>
 
   <!--Seccion de mensajes de inactividad-->
@@ -237,5 +276,4 @@
   <script src="./assets/js/asientos.js"></script>
   <script src="./assets/js/paso3.js"></script>
 </body>
-
 </html>
