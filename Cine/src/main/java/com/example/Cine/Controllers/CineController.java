@@ -21,6 +21,7 @@ import com.example.Cine.modelos.Director;
 import com.example.Cine.modelos.Ingresos;
 import com.example.Cine.modelos.Ingresos2;
 import com.example.Cine.modelos.Ingresos3;
+import com.example.Cine.modelos.Oferta;
 import com.example.Cine.modelos.Ingresos2;
 import com.example.Cine.modelos.PasoQr;
 import com.example.Cine.modelos.QrLink;
@@ -327,5 +328,11 @@ public class CineController {
     public List<Ingresos3> IngresosTotalesXSucursal() {
         CineDb cineDb = new CineDb();
         return cineDb.IngresosTotalesXSucursal();
+    }
+
+    @GetMapping("/Cine/obtenerOfertas")
+    public List<Oferta> obtenerOfertas(){
+        CineDb cineDb = new CineDb();
+        return cineDb.obtenerOfertas();
     }
 }
