@@ -226,7 +226,6 @@ function actualizarCartelera() {
         filtrarPorGenero();
     }
 
-
 }
 function filtrarSucursal(idSucursal) {
     fetch(`${urlbase}/Cine/filtrarCarteleraPorSucursal/${idSucursal}`)
@@ -292,7 +291,8 @@ filtroGenero.addEventListener('change', actualizarCartelera);
 document.addEventListener("DOMContentLoaded", function () {
     let filtrarID = new URLSearchParams(window.location.search);
     ID = filtrarID.get("idPelicula");
-
+    let fechaActual = new Date().toISOString().split('T')[0];
+    document.getElementById("fecha").value = fechaActual;
     if (ID) {
         FiltrarPorID(ID);
     }

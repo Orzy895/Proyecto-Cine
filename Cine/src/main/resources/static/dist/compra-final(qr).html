@@ -12,30 +12,32 @@
 <body class="bg-gradient-to-b from-[#431B19] to-[#1A1919]">
 
     <header>
-		<!--nav principal-->
-		<nav class="bg-black max-sm:hidden">
-			<ul class="flex justify-end">
-				<li><a href="./home.html" class="text-white mr-16 text-xl">Inicio</a></li>
-				<li><a href="#" class="text-white mr-16 text-xl" onclick="window.location.href='./busqueda.html'">Peliculas</a></li>
-				<li><a href="./cartelera.html" class="text-white mr-16 text-xl">Cartelera</a></li>
-			</ul>
-		</nav>
-		<!--seccion del logo-->
-		<section
-			class="bg-gradient-to-b from-[#9C6D46] to-[#684A31] flex justify-between px-5 py-0 items-center w-full max-sm:px-0">
-			<a href="./home.html" class="cursor-pointer">
-                <img src="./assets/img/logo.png" alt="" 
-                    class="w-auto h-12 max-sm:h-10 max-sm:w-auto">
+        <!--nav principal-->
+        <nav class="bg-black max-sm:hidden">
+            <ul class="flex justify-end">
+                <li><a href="./home.html" class="text-white mr-16 text-xl">Inicio</a></li>
+                <li><a href="#" class="text-white mr-16 text-xl"
+                        onclick="window.location.href='./busqueda.html'">Peliculas</a></li>
+                <li><a href="./cartelera.html" class="text-white mr-16 text-xl">Cartelera</a></li>
+            </ul>
+        </nav>
+        <!--seccion del logo-->
+        <section
+            class="bg-gradient-to-b from-[#9C6D46] to-[#684A31] flex justify-between px-5 py-0 items-center w-full max-sm:px-0">
+            <a href="./home.html" class="cursor-pointer">
+                <img src="./assets/img/logo.png" alt="" class="w-auto h-12 max-sm:h-10 max-sm:w-auto">
             </a>
-			<div
+            <div
                 class="user-container flex items-center w-44 h-12 justify-center relative space-x-2 max-sm:m-0 max-sm:space-x-0 max-sm:w-32">
                 <div id="perfilUsuarioBtn" onclick="irAPerfilUsuario()" class="cursor-pointer max-sm:ml-0">
-                    <img id="perfilUsuario" class="rounded-full h-10 w-10 cursor-pointer" src="./assets/icon/usuario.png"
-                        class="w-auto h-10 max-sm:h-10">
+                    <img id="perfilUsuario" class="rounded-full h-10 w-10 cursor-pointer"
+                        src="./assets/icon/usuario.png" class="w-auto h-10 max-sm:h-10">
                 </div>
                 <div class="flex max-sm:hidden">
                     <div class="cursor-pointer">
-                        <p id="usernamePlaceholder" class="text-lg font-semibold text-ellipsis whitespace-nowrap overflow-hidden max-w-[110px] mr-3">Username</p>
+                        <p id="usernamePlaceholder"
+                            class="text-lg font-semibold text-ellipsis whitespace-nowrap overflow-hidden max-w-[110px] mr-3">
+                            Username</p>
                     </div>
                     <div onclick="userLogged()" class="absolute right-0 bottom-3 cursor-pointer ">
                         <svg class="w-5 h-5 ml-2 -mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -59,11 +61,12 @@
                     <p class="mt-2">Bienvenido a Filmania</p>
                     <button onclick="window.location.href='./perfil-usuario.html'"
                         class="mt-4 bg-[#996c45] w-40 py-2 rounded-full font-bold">Perfil</button>
-                    <button id="logoutButton" class="mt-4 bg-[#996c45] w-40 py-2 rounded-full font-bold">Cerrar Sesión</button>
+                    <button id="logoutButton" class="mt-4 bg-[#996c45] w-40 py-2 rounded-full font-bold">Cerrar
+                        Sesión</button>
                 </div>
             </div>
-		</section>
-	</header>
+        </section>
+    </header>
 
 
     <main class="flex flex-col items-center h-full bg-gradient-to-b from-[#431B19] to-[#1A1919]
@@ -129,7 +132,7 @@
             <div class="border-solid border-1 flex flex-col items-center pt-4">
                 <p class="text-2xl pb-2">Escanee su código QR</p>
                 <!--habilitar link para pruebas directas en el navegador
-                    <a href="#" id="paginaVideo">-->
+                <a href="#" id="paginaVideo">-->
                     <div id="compra-qrcode" class="border-white border-8"></div>
                 <!--</a>-->
 
@@ -145,27 +148,27 @@
     <footer class="bg-gradient-to-b from-[#9C6D46] to-[#684A31] py-5 max-sm:py-6 w-full relative">
         <div id="footerItems" class="max-sm:pr-0">
             <div class="flex pl-36 max-sm:pl-3 space-x-3">
-				<div class="space-y-1">
-					<div class="flex items-center">
-						<img src="./assets/icon/seguro.png" class="w-4 mr-3" />
-						<a href="#" class="text-white max-sm:text-sm">Politicas de la Empresa</a>
-					</div>
-					<div class="flex items-center cursor-pointer" id="chatbot-ayuda-footer">
-						<img src="./assets/icon/apoyo (1).png" class="w-4 mr-3" />
-						<p class="text-white max-sm:text-sm">Atencion al Cliente</p>
-					</div>
-				</div>
-				<div class="space-y-1">
-					<div class="flex items-center">
-						<img src="./assets/icon/grupo.png" class="w-4 mr-3" />
-						<a href="./integrantes.html" class="text-white max-sm:text-sm">Creadores de la página</a>
-					</div>
-					<div class="flex items-center">
-						<img src="./assets/icon/seguridad.png" class="w-4 mr-3" />
-						<a href="#" class="text-white max-sm:text-sm">Politicas de Privacidad</a>
-					</div>
-				</div>
-			</div>
+                <div class="space-y-1">
+                    <div class="flex items-center">
+                        <img src="./assets/icon/seguro.png" class="w-4 mr-3" />
+                        <a href="#" class="text-white max-sm:text-sm">Politicas de la Empresa</a>
+                    </div>
+                    <div class="flex items-center cursor-pointer" id="chatbot-ayuda-footer">
+                        <img src="./assets/icon/apoyo (1).png" class="w-4 mr-3" />
+                        <p class="text-white max-sm:text-sm">Atencion al Cliente</p>
+                    </div>
+                </div>
+                <div class="space-y-1">
+                    <div class="flex items-center">
+                        <img src="./assets/icon/grupo.png" class="w-4 mr-3" />
+                        <a href="./integrantes.html" class="text-white max-sm:text-sm">Creadores de la página</a>
+                    </div>
+                    <div class="flex items-center">
+                        <img src="./assets/icon/seguridad.png" class="w-4 mr-3" />
+                        <a href="#" class="text-white max-sm:text-sm">Politicas de Privacidad</a>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="flex absolute top-3 right-16 max-sm:top-20 space-x-1">
             <a href="">
@@ -180,19 +183,23 @@
         </div>
     </footer>
 
-    <script src="./assets/js/qrcode.js"></script>    
+    <script src="./assets/js/qrcode.js"></script>
     <script src="./assets/js/header.js"></script>
-    
+
     <script>
 
         // PONER URL BASE DEL PROYECTO
         let baseUrl = "http://localhost:8080";
-    
+
+        var rutaCompleta = window.location.pathname;
+        var segmentos = rutaCompleta.split('/');
+        segmentos.pop();
+        var rutaSinNombreArchivo = segmentos.join('/');
+
         // DEBE APUNTAR al qr_target.html que estará en el SERVER "https://www.ejem.com/qr_target.html" 
-        let targetUrl = "./qr_target.html";
-    
+        let targetUrl = window.location.origin + rutaSinNombreArchivo + "/qr_target.html";
+
         let pruebas;
-    
         function ObtenerCompra(codigoConfirmacion) {
             // recurso en backend
             fetch(baseUrl + '/Cine/datosQr/' + codigoConfirmacion, { method: "GET" })
@@ -200,7 +207,7 @@
                 .then(compra => {
                     pruebas = compra;
                     ImprimirCompra(pruebas);
-    
+
                     // Enviar correo después de imprimir la compra
                     enviarCorreoUsuario();
                 })
@@ -208,7 +215,7 @@
                     console.error('Error al obtener la compra:', error);
                 });
         }
-    
+
         function ImprimirCompra(compra) {
             // Mapping
             let confirmacion = document.getElementById("compra-confirmacion");
@@ -219,7 +226,7 @@
             let fecha = document.getElementById("compra-fecha");
             let hora = document.getElementById("compra-hora");
             let boletos = document.getElementById("compra-boletos");
-    
+
             confirmacion.innerHTML = codigoConfirmacion;
             total.innerHTML = formateado;
             sede.innerHTML = compra.sede;
@@ -228,44 +235,43 @@
             boletos.innerHTML = compra.boletos;
             fecha.innerHTML = compra.fecha;
             hora.innerHTML = compra.hora;
-    
+
             // Formatear hora segun las preferencias del usuario (HH:mm)
             // let hour = new Date("2023-01-01 " + compra.hora);
             // hora.innerHTML = hour.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' });
-    
+
             // Generar QR code
             let qrcode = new QRCode(document.getElementById('compra-qrcode'), {
                 text: paginaVideo,
                 width: 300,
                 height: 300
             });
-    
+
             // qr clickeable
-            // let qrlink = document.getElementById("paginaVideo");
-            // qrlink.href = paginaVideo;
-    
+            //let qrlink = document.getElementById("paginaVideo");
+            //qrlink.href = paginaVideo;
+
             let qrpic = document.getElementById('compra-qrcode');
             qrpic.classList.add('border-[10px]', 'border-white');
         }
-    
+
         // Calculo del total de compra
-        
         let compraTotal = parseFloat(localStorage.getItem('total')) || 0;
         let formateado = `$${compraTotal.toFixed(2)}`;
         let codigoConfirmacion = sessionStorage.codigoConfirmacion;
         let paginaVideo = targetUrl + "?cod=" + codigoConfirmacion;
-    
+
         ObtenerCompra(codigoConfirmacion);
-    
+
         function enviarCorreoUsuario() {
             const usuarioDataString = sessionStorage.getItem('usuarioData');
             const usuarioData = JSON.parse(usuarioDataString);
             console.log(usuarioDataString);
-    
+
             if (usuarioData) {
                 const correoUsuario = usuarioData.email;
                 const compra = pruebas;
-    
+
                 fetch(baseUrl + '/Cine/enviarCorreoCompra', {
                     method: 'POST',
                     headers: {
@@ -291,5 +297,6 @@
             }
         }
     </script>
-    </body>
+</body>
+
 </html>

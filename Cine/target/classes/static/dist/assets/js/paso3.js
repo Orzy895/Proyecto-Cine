@@ -27,23 +27,25 @@ function oferta(oferta) {
     if (ofertaAplicado === false) {
         //el de parejas
         if (oferta === 1) {
-            if (adulto == 2 && boletos==2) {
+            if (adulto == 2 && boletos == 2) {
                 localStorage.setItem('total', (total * 0.9))
                 alert("Oferta aplicada")
                 ofertaAplicado = true;
             }
             else {
+                document.getElementById('oferta1').checked = false
                 alert("Oferta invalida")
             }
         }
         //el de familia
         else if (oferta === 2) {
-            if (adulto ===2 && nino == 2 && boletos == 4) {
+            if (adulto === 2 && nino == 2 && boletos == 4) {
                 localStorage.setItem('total', (total * 0.9))
                 alert("Oferta aplicada")
                 ofertaAplicado = true;
             }
-            else{
+            else {
+                document.getElementById('oferta2').checked = false
                 alert("Oferta invalida")
             }
         }
@@ -57,10 +59,12 @@ function oferta(oferta) {
                     ofertaAplicado = true;
                 }
                 else {
+                    document.getElementById('oferta3').checked = false
                     alert("Oferta solamente valido para Transformers")
                 }
             }
             else {
+                document.getElementById('oferta3').checked = false
                 alert("Oferta invalida")
             }
         }
@@ -73,6 +77,7 @@ function oferta(oferta) {
                 ofertaAplicado = true;
             }
             else {
+                document.getElementById('oferta4').checked = false
                 alert("Oferta invalida")
             }
         }
@@ -85,32 +90,37 @@ function oferta(oferta) {
                     alert("Oferta aplicada")
                     ofertaAplicado = true;
                 }
-                else{
+                else {
+                    document.getElementById('oferta5').checked = false
                     alert("Oferta solo valido para Jujutsu Kaisen")
                 }
             }
-            else{
+            else {
+                document.getElementById('oferta5').checked = false
                 alert("Oferta invalida")
             }
         }
         //2 boletos si es de terror
-        else if(oferta ===6){
-            if(boletos == 2){
-                if(genero.includes('Terror')){
-                    total-=1.5
+        else if (oferta === 6) {
+            if (boletos == 2) {
+                if (genero.includes('Terror')) {
+                    total -= 1.5
                     localStorage.setItem('total', total)
                     ofertaAplicado = true
                     alert("Oferta aplicada")
                 }
-                else{
+                else {
+                    document.getElementById('oferta6').checked = false
                     alert("Oferta solo valido para peliculas de terror")
                 }
             }
-            else{
+            else {
+                document.getElementById('oferta6').checked = false
                 alert("Oferta invalida")
             }
         }
         document.getElementById("codigoOferta").placeholder = generarCodigoAleatorio();
+        cancelarDropdown();
     }
     else {
         alert("Ya ha aplicado una oferta")
@@ -129,52 +139,46 @@ document.getElementById('exp').addEventListener('input', verificarCampos);
 document.getElementById('cw').addEventListener('input', verificarCampos);
 
 function verificarCampos() {
-  // Obtener los valores de los campos
-  var valorCampo1 = document.getElementById('nombre').value;
-  var valorCampo2 = document.getElementById('apellido').value;
- 
-  var valorCampo4 = document.getElementById('correo').value;
-  var valorCampo5 = document.getElementById('numTarjeta').value;
-  var valorCampo6 = document.getElementById('exp').value;
-  var valorCampo7 = document.getElementById('cw').value;
+    // Obtener los valores de los campos
+    var valorCampo1 = document.getElementById('nombre').value;
+    var valorCampo2 = document.getElementById('apellido').value;
 
-  // Obtener el botón
-  var miBoton = document.getElementById('button-next');
-  var mensajeError = document.getElementById('mensajeError');
-  // Verificar si todos los campos están llenos
-  if (valorCampo1 !== '' && valorCampo2 !== '' && valorCampo4 !== '' &&
-  valorCampo5 !== '' && valorCampo6 !== '' && valorCampo7 !== '' ) {
-    // Habilitar el botón si todos los campos están llenos
-    miBoton.disabled = false;
+    var valorCampo4 = document.getElementById('correo').value;
+    var valorCampo5 = document.getElementById('numTarjeta').value;
+    var valorCampo6 = document.getElementById('exp').value;
+    var valorCampo7 = document.getElementById('cw').value;
 
-  } else {
-    // Deshabilitar el botón si algún campo está vacío
-    miBoton.disabled = true;
+    // Obtener el botón
+    var miBoton = document.getElementById('button-next');
+    var mensajeError = document.getElementById('mensajeError');
+    // Verificar si todos los campos están llenos
+    if (valorCampo1 !== '' && valorCampo2 !== '' && valorCampo4 !== '' &&
+        valorCampo5 !== '' && valorCampo6 !== '' && valorCampo7 !== '') {
+        // Habilitar el botón si todos los campos están llenos
+        miBoton.disabled = false;
 
-  }
+    } else {
+        // Deshabilitar el botón si algún campo está vacío
+        miBoton.disabled = true;
+
+    }
 
 }
 
 // dropdown
 function toggleDropdown() {
-    var dropdown = document.getElementById("dropdown");
-    dropdown.classList.toggle("invisible");
+    if (ofertaAplicado == false) {
+        var dropdown = document.getElementById("dropdown");
+        dropdown.classList.toggle("invisible");
+    }
+    else{
+        alert("Ya ha aplicado una oferta")
+    }
 }
 
 function cancelarDropdown() {
     var dropdown = document.getElementById("dropdown");
-    dropdown.classList.add("invisible");
-}
-
-function aceptarDropdown() {
-    // Genera un código aleatorio y lo muestra en el campo de contraseña
-    var passwordInput = document.getElementById("passwordInput");
-    var codigoAleatorio = generarCodigoAleatorio();
-    passwordInput.value = codigoAleatorio;
-
-    // Oculta el dropdown
-    var dropdown = document.getElementById("dropdown");
-    dropdown.classList.add("invisible");
+    dropdown.classList.add("invisible")
 }
 
 function generarCodigoAleatorio() {
