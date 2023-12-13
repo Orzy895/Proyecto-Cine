@@ -11,7 +11,7 @@
 	<script src="https://kit.fontawesome.com/da2008d449.js" crossorigin="anonymous"></script>
 </head>
 
-<body onload="cargarPeliculas()" class="bg-radial-gradient at-[50.02% 52.33%] from-[#431B19] via-[#431B19] to-[#141414]">
+<body onload="cargarPeliculas(), obtenerPromocion()" class="bg-radial-gradient at-[50.02% 52.33%] from-[#431B19] via-[#431B19] to-[#141414]">
 	<!--HEADER-->
 	<header>
         <!--nav principal-->
@@ -83,17 +83,15 @@
 	<!--SECCION 1 - CARRUSEL DE PROMOCIONES-->
 	<section class="h-96 overflow-hidden relative max-sm:h-56 mt-0">
 		<!--imagenes-->
-		<div class="h-full">
-			<img src="./assets/img/img-home/Oferta 1.jpg" alt=""
+		<div id="carruselPromo" class="h-full">
+			<img src="" alt=""
 				class="block w-full h-full object-cover" id="car1img" />
-			<img src="./assets/img/img-home/Oferta 2.jpg" alt=""
+			<img src="" alt=""
 				class="hidden w-full h-full object-cover" id="car2img" />
-			<img src="./assets/img/img-home/Oferta 3.png" alt=""
+			<img src="" alt=""
 				class="hidden w-full h-full object-cover" id="car3img" />
-			<img src="./assets/img/img-home/Oferta 5.png" alt=""
+			<img src="" alt=""
 				class="hidden w-full h-full object-cover" id="car4img" />
-			<img src="./assets/img/img-home/Oferta 6.png" alt=""
-				class="hidden w-full h-full object-cover" id="car5img" />
 		</div>
 		<!--botones radio-->
 		<div class="absolute z-10 bottom-0 left-1/2 -translate-x-1/2">
@@ -101,7 +99,6 @@
 			<input type="radio" name="car" id="car2rad" onclick="img2cambio()" />
 			<input type="radio" name="car" id="car3rad" onclick="img3cambio()" />
 			<input type="radio" name="car" id="car4rad" onclick="img4cambio()" />
-			<input type="radio" name="car" id="car5rad" onclick="img5cambio()" />
 		</div>
 		<!--botones de adelante y atras-->
 		<div class="absolute z-20 left-0 top-1/2 -translate-y-1/2 cursor-pointer" onclick="atras()">
@@ -113,7 +110,7 @@
 	</section>
 	
 	<!--Seccion del CHATBOX-->
-	<section class="w-full h-[1550px] max-sm:h-[1800px] absolute top-[145px] max-sm:top-[80px]">
+	<section class="w-full h-[1630px] max-sm:h-[1800px] absolute top-[145px] max-sm:top-[80px]">
 		<!--CHATBOX-->
 		<button id="show-chatbot" class="chatbot-toggle-button z-50">
 			<div class="bg-[#63432e] flex items-center">
@@ -353,45 +350,17 @@
 				<!--promocion 1-->
 				<div
 					class="bg-[#362A26] h-80 rounded-3xl relative max-sm:flex-col max-sm:h-56 w-11/12 max-sm:pt-0 max-sm:items-center flex justify-center py-5">
-					<div id="promo"
+					<div id="promo1"
 						class="max-w-full w-11/12 h-28 justify-center items-center max-sm:flex max-sm:w-full">
-						<!--imagen promocion-->
-						<img  id="promo" class="w-full h-full object-cover max-sm:w-36"
-							src="./assets/img/img-home/Oferta 5.png" alt="" />
-						<div class="text-center max-sm:w-32 max-sm:whitespace-nowrap max-sm:text-ellipsis">
-							<!--info promociom-->
-							<p
-								class="text-white max-h-[100px] mb-6 font-bold text-lg py-4 max-sm:text-sm text-ellipsis overflow-hidden max-sm:px-2">
-								¡Explora el mundo de la magia en Filmania! 
-								Regístrate ahora y obtén un 15% de descuento a partir de la compra de tu segundo boleto para ver Black Clover: La Espada del Rey Mago.
-							</p>
-							<!--boton de mas informacion-->
-							<a href=""
-								class="text-white font-bold text-lg bg-black rounded-lg cursor-pointer px-3 py-2 max-sm:text-sm">Más
-								info</a>
-						</div>
+						
 					</div>
 				</div>
 				<!--promocion 2-->
 				<div
 					class="bg-[#362A26] h-80 rounded-3xl relative max-sm:flex-col max-sm:h-56 w-11/12 max-sm:pt-0 max-sm:items-center flex justify-center py-5">
-					<div id="promo"
+					<div id="promo2"
 						class="max-w-full w-11/12 h-28 justify-center items-center max-sm:flex max-sm:w-full">
-						<!--imagen promocion-->
-						<img  id="promo" class="w-full h-full object-cover max-sm:w-36"
-							src="./assets/img/img-home/Oferta 6.png" alt="" />
-						<div class="text-center max-sm:w-32 max-sm:whitespace-nowrap max-sm:text-ellipsis">
-							<!--info promociom-->
-							<p
-								class="text-white max-h-[100px] mb-6 font-bold text-lg py-4 max-sm:text-sm text-ellipsis overflow-hidden max-sm:px-2">
-								 Compra tres boletos y recibe el cuarto boleto ¡GRATIS! Esta oferta especial está disponible por tiempo limitado, 
-								 así que regístrate ahora y disfruta de la película con tus amigos. 
-							</p>
-							<!--boton de mas informacion-->
-							<a href=""
-								class="text-white font-bold text-lg bg-black rounded-lg cursor-pointer px-3 py-2 max-sm:text-sm">Más
-								info</a>
-						</div>
+						
 					</div>
 				</div>
 			</div>
