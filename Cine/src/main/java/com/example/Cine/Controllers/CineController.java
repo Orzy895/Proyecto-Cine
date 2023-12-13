@@ -90,13 +90,13 @@ public class CineController {
         return ResponseEntity.ok(id);
     }
 
-    @GetMapping("Cine/peliculas")
+    @GetMapping("/Cine/peliculas")
     public List<Pelicula> cargarTodasLasPeliculas() {
         CineDb cineDb = new CineDb();
         return cineDb.obtenerTodasLasPeliculas();
     }
 
-    @GetMapping("Cine/{id_pelicula}")
+    @GetMapping("/Cine/{id_pelicula}")
     public Pelicula buscarPeli(@PathVariable("id_pelicula") int idPelicula) {
         CineDb cineDb = new CineDb();
         return cineDb.buscarPelicula(idPelicula);

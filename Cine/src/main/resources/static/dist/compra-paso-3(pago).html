@@ -10,7 +10,7 @@
   <link rel="icon" href="./assets/icon/favicon.ico">
 </head>
 
-<body class="bg-gradient-to-b from-[#431B19] via-[#351918] to-[#261716]">
+<body onload="obtenerpelis()" class="bg-gradient-to-b from-[#431B19] via-[#351918] to-[#261716]">
   <header>
     <!--nav principal-->
     <nav class="bg-black max-sm:hidden">
@@ -117,11 +117,11 @@
           </div>
           <div class="mb-3">
             <h5 class="text-lg font-semibold mb-2 text-white text-left">Nombre</h5>
-            <input type="name" required class="w-full px-3 py-2 border-b border-white bg-[#63432E]/50" placeholder="">
+            <input type="text" required class="w-full px-3 py-2 border-b border-white bg-[#63432E]/50" placeholder="">
           </div>
           <div class="mb-3">
             <h5 class="text-lg font-semibold mb-2 text-white text-left">Apellido</h5>
-            <input type="lname" required class="w-full px-3 py-2 border-b border-white bg-[#63432E]/50" placeholder="">
+            <input type="text" required class="w-full px-3 py-2 border-b border-white bg-[#63432E]/50" placeholder="">
           </div>
           <div class="mb-3">
             <h5 class="text-lg font-semibold mb-2 text-white text-left">Tarjeta Club Filmania</h5>
@@ -141,7 +141,7 @@
 
           <div class="mb-3">
             <h5 class="text-lg font-semibold mb-2 text-white text-left">Número de la tarjeta</h5>
-            <input type="password required" class="w-full px-3 py-2 border-b border-white bg-[#63432E]/50"
+            <input type="text" required class="w-full px-3 py-2 border-b border-white bg-[#63432E]/50"
               placeholder="">
           </div>
           <div class="mb-3">
@@ -149,7 +149,7 @@
             <div class="flex mb-3">
               <!-- Columna Izquierda -->
               <div class="w-1/2 pr-2">
-                <input type="text" required class="w-full px-3 py-2 border-b border-white bg-[#63432E]/50"
+                <input type="month" required class="w-full px-3 py-2 border-b border-white bg-[#63432E]/50"
                   aria-label="FECHA" placeholder="MM/YY">
               </div>
               <!-- Columna Derecha -->
@@ -235,6 +235,7 @@
   </section>
   <script src="./assets/js/header.js"></script>
   <script src="./assets/js/asientos.js"></script>
+  <script src="./assets/js/paso3.js"></script>
 </body>
 
 </html>

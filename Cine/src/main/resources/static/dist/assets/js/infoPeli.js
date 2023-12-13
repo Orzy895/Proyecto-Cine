@@ -240,14 +240,14 @@ async function mostrarActores(idPelicula) {
 
 const pelicula = JSON.parse(sessionStorage.getItem('peliculaSeleccionada'));
 const idPelicula = pelicula.idPelicula
+const genero = pelicula.genero
 document.addEventListener("DOMContentLoaded", function () {
     var compra = document.getElementById("CompraBoleto");
 
-    // Add a click event listener to the button
     compra.addEventListener("click", function () {
-        // Construct the URL with the movie title as a query parameter
+        localStorage.setItem('genero',genero)
+        localStorage.setItem('pelicula', idPelicula)
         var url = "./cartelera.html?idPelicula=" + encodeURIComponent(idPelicula);
-        // Navigate to the URL
         window.location.href = url;
     });
 });

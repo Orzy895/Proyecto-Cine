@@ -1,5 +1,12 @@
 let boletosTotal = 0;
-
+let adulto = 0;
+let adultoMon = 0;
+let nino = 0;
+let ninoMon = 0;
+let jubilado = 0;
+let jubiladoMon = 0;
+let discapacitado = 0;
+let discapacitadoMon = 0;
 function siguiente(){
     if(boletosTotal===0 || boletosTotal<0){
         alert("No ha seleccionado ningun boleto")
@@ -24,7 +31,30 @@ function increment(type) {
         total += 3.00;
     }
     totalElement.innerText = `$${total.toFixed(2)}`;
-
+    if(type === 'adulto'){
+        adulto++;
+        adultoMon +=3;
+        localStorage.setItem('adulto',adulto)
+        localStorage.setItem('adultoMon',adultoMon)
+    }
+    else if(type === 'niño'){
+        nino++;
+        ninoMon+=3;
+        localStorage.setItem('nino',nino)
+        localStorage.setItem('ninoMon',ninoMon)
+    }
+    else if(type === 'jubilado'){
+        jubilado++;
+        jubiladoMon+=2;
+        localStorage.setItem('jubilado',jubilado)
+        localStorage.setItem('jubiladoMon',jubiladoMon)
+    }
+    else if(type === 'discapacitado'){
+        discapacitado++;
+        discapacitadoMon+=2;
+        localStorage.setItem('discapacitado',discapacitado)
+        localStorage.setItem('discapacitadoMon',discapacitadoMon)
+    }
     //Verifica cuantos boletos hay en el almacenamiento
 	const tickeState = localStorage.getItem("boletos");
 	const { ticket: storedTicket} =
@@ -54,7 +84,30 @@ function decrement(type) {
             total -= 3.00;
         }
         totalElement.innerText = `$${total.toFixed(2)}`;
-
+        if(type === 'adulto'){
+            adulto--;
+            adultoMon -=3;
+            localStorage.setItem('adulto',adulto)
+            localStorage.setItem('adultoMon',adultoMon)
+        }
+        else if(type === 'niño'){
+            nino--;
+            ninoMon-=3;
+            localStorage.setItem('nino',nino)
+            localStorage.setItem('ninoMon',ninoMon)
+        }
+        else if(type === 'jubilado'){
+            jubilado--;
+            jubiladoMon-=2;
+            localStorage.setItem('jubilado',jubilado)
+            localStorage.setItem('jubiladoMon',jubiladoMon)
+        }
+        else if(type === 'discapacitado'){
+            discapacitado--;
+            discapacitadoMon-=2;
+            localStorage.setItem('discapacitado',discapacitado)
+            localStorage.setItem('discapacitadoMon',discapacitadoMon)
+        }
         //Verifica cuantos boletos hay en el almacenamiento
 	    const tickeState = localStorage.getItem("boletos");
 	    const { ticket: storedTicket} =

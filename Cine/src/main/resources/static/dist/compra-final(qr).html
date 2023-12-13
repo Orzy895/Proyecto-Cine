@@ -248,11 +248,7 @@
         }
 
         //Calculo del total de compra
-        let compraTotal = ((Number(sessionStorage.adultoCantidad) +
-            Number(sessionStorage.ninoCantidad)) * 3)
-            + ((Number(sessionStorage.jubiladoCantidad) +
-                Number(sessionStorage.discapacitadoCantidad)) * 2)
-        //
+        let compraTotal = localStorage.getItem("total")
         let codigoConfirmacion = sessionStorage.codigoConfirmacion
         let paginaVideo = targetUrl + "?cod=" + codigoConfirmacion;
 
