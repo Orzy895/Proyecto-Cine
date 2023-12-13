@@ -23,6 +23,7 @@ import com.example.Cine.modelos.Director;
 import com.example.Cine.modelos.Ingresos;
 import com.example.Cine.modelos.Ingresos2;
 import com.example.Cine.modelos.Ingresos3;
+import com.example.Cine.modelos.Oferta;
 
 public class CineDb {
     Connection cn;
@@ -1252,5 +1253,32 @@ public class CineDb {
         }
         return ingresos;
 
+    }
+    public List<Oferta> obtenerOfertas(){
+        List<Oferta> ofertas = new ArrayList<>();
+        try {
+            String query = "SELECT * FROM Oferta";
+
+            Statement stmt = cn.createStatement();
+            ResultSet result = stmt.executeQuery(query);
+
+            while (result.next()) {
+                Oferta oferta = new Oferta(
+                        result.getString("id_oferta"),
+                        result.getString("feInicio"),
+                        result.getString("feFinal"),
+                        result.getString("titulo"),
+                        result.getString("detalles"),
+                        result.getInt("id_cartelera"),
+                        result.getString("foto_inte"));
+                ofertas.add(oferta);
+            }
+
+            result.close();
+            stmt.close();
+        } catch (Exception e) {
+            System.out.println("Error al obtener las ofertas" + e.getMessage());
+        }
+        return ofertas;
     }
 }
