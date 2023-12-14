@@ -2732,6 +2732,10 @@ video {
   opacity: 0.6;
 }
 
+.opacity-50 {
+  opacity: 0.5;
+}
+
 .opacity-80 {
   opacity: 0.8;
 }
