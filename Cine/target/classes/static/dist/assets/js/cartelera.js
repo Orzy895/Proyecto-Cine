@@ -146,10 +146,6 @@ function guardarPeliSeleccionada(peliSeleccionada, hora) {
             sessionStorage.fecha = document.getElementById('fecha').value;
             sessionStorage.hora = hora;
             sessionStorage.nombreSala = pelicula.sala;
-
-            
-            sessionStorage.fotoPoster = pelicula.fotoPoster;
-            sessionStorage.linkQR = targetUrl + "?cod=" + sessionStorage.codigoConfirmacion;
         }
         anteriorCartelera = pelicula.id_cartelera;
     });
